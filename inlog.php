@@ -42,10 +42,9 @@ if (isset($_POST['submit'])) {
           }
            $conn->close();
 
-        
-
+           
 ?>
-
+  <script>alert('emailadress en wachtwoord kloppen niet, Probeer opnieuw')</script>";
         
        
         
