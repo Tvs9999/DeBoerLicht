@@ -14,7 +14,6 @@ session_start();
 </head>
 
 <body>
-  <div class="topnav">
   <div class="sidebar">
     <?php if (isset($_SESSION['admin_name']) || isset($_SESSION['user_name'])) { ?>
       <div class="logo_content">
