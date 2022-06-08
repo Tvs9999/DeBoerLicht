@@ -178,3 +178,26 @@ pointer-events: none;
   width: 90%;
 }
 
+
+.apparatuuroverzicht-tabel{
+  display: flex;
+  justify-content: center;
+  
+}
+
+table {
+
+  border-collapse: collapse;
+  display: flex;
+
+}
+
+.apparatuuroverzicht-tabel td,.apparatuuroverzicht-tabel th{
+padding:12px 15px;
+border:1px solid rgb(0, 0, 0);
+text-align: center;
+}
+
+.apparatuuroverzicht-tabel th {
+  background-color: #ddd;
+}
