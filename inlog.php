@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login.html</title>
-    <link rel="stylesheet" href="DeBoerLicht">
+    <link rel="stylesheet" href="DeBoerLicht.css">
 </head>
 <body>
  <center>
@@ -24,27 +24,33 @@
 </body>
 </html>
 <?php
-include 'config.php';
+include 'connection.php';
 if (isset($_POST['submit'])) {
     $email=$_POST['email'];
     $wachtwoord=$_POST['wachtwoord'];
       
        
-      }
+      
   
         $sql = "SELECT * FROM `beheerder` WHERE `email` = '".$email."' AND `wachtwoord` = '".$wachtwoord."'";
-        
+        $result = $conn->query($sql);
   
-      if
-          ($_SESSION['email'] = $email); {
-          header("location:Producten.php");
-          exit();
+        if ($result->num_rows > 0) {
+            $_SESSION['email'] = $email;
+            header("location:header.php");
+            exit();
           }
-           $conn->close();
+    else
+    {
+        echo  "<script>alert('email en wachtwoord kloppen niet, Probeer het opnieuw')</script>";
+    }
 
-           
+}
+
+         
+       $conn->close();      
 ?>
-  <script>alert('emailadress en wachtwoord kloppen niet, Probeer opnieuw')</script>";
+ 
         
        
         
