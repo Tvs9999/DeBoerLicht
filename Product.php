@@ -17,11 +17,26 @@ include 'connection.php';
 <body class="">
     <div class="container">
         <div class="product-container">
-            <h1>hello</h1>
+            <?php 
+            $sql = "SELECT * FROM producten";
+            $results = mysqli_query($conn, $sql);
+            $resultCheck = mysqli_num_rows($results);
+
+            if($resultCheck > 0) { ?>
+                <?php while ($row = mysqli_fetch_array($results)){ ?>
+                    <div class="product">
+                        <img src="UploadImg/no-image.png" alt="" class="product-foto">
+                        <div class="product-info">
+                            <h2 class="product-naam"><?php echo $row['naam']; ?></h2>
+                            <h2 class="product-prijs"><?php echo "€ ".$row['prijs']; ?></h2>
+                        </div>
+                    </div>
+                    <?php } ?>
+                <?php } ?>            
         </div> 
         <div class="sidebar-left">
             <?php include 'header.php'?>
         </div>
-</div>
+    </div>
 </body>
 </html>

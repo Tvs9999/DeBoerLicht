@@ -191,7 +191,37 @@ pointer-events: none;
 
 .product-container{
   grid-area: 1 / 2 / 1 / 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 300px;
+  gap: 20px 30px;
+  padding: 20px 50px;
+
 }
+
+.product{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  height: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  
+}
+
+.product-foto{
+  border-radius: 15px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  grid-area: 1 / 1 / 1 / 2;
+}
+
+.product-info{
+  grid-area: 1 / 2 / 1 / 2;
+}
+
+
+
 
 .apparatuuroverzicht-tabel{
   display: flex;
