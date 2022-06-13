@@ -5,8 +5,8 @@ $Achternaam=  $_GET['Achternaam'];
 $Datum=  $_GET['Datum'];
 $email =  $_GET['email'];
 $adres = $_GET['adres'];
-$woonplaats= $_GET['woonplaats'];
-$Postcode =  $_GET['Postcode'];
+//$woonplaats= $_GET['woonplaats'];
+//$Postcode =  $_GET['Postcode'];
 $totaalprijs = $_GET['totaalprijs'];
 
 
@@ -26,7 +26,7 @@ if(mail(implode(',',$receiver), $subject, $body)){
 }
 
 
-include("connection.phpb");
+include("connection.php");
 error_reporting(0);
 
 $query1 = "DELETE FROM bestelling WHERE naam='$naam' && aantal='$aantal' && telef='$telef' && email='$email'";
@@ -39,7 +39,7 @@ if($data1){
     <META HTTP-EQUIV="Refresh" CONTENT="0; URL=">
     <?php
 }else{
-    echo "<script>alert('Sorry, bestelling versturen is op het moment niet gelukt, Probeer het op een ander tijsstip weer')</script>";
+    echo "<script>alert('Sorry, bestelling versturen is op het moment niet gelukt, Probeer het op een ander tijdstip weer')</script>";
 }
 ?>
 

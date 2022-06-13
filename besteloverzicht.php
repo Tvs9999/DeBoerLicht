@@ -51,7 +51,7 @@ include("header.php");
                 <td>".$result['totaalprijs']."</td>
                 
                 
-                <td><a href='mail.php?Voornaam=$result[Voornaam]&Achternaam=$result[Achternaam]&Datum=$result[Datum]&email=$result[email]&adres=$result[adres]&totaalprijs=$result[totaalprijs' onclick='return checkdelete()'><input type='submit' value='goedkeuren' id='deletebtn'></a></td>                     
+                <td><a href='mail.php?Voornaam=$result[Voornaam]&Achternaam=$result[Achternaam]&Datum=$result[Datum]&email=$result[email]&adres=$result[adres]&totaalprijs=$result[totaalprijs]' onclick='return checkdelete()'><input type='submit' value='goedkeuren' id='deletebtn'></a></td>                     
               </tr>
               ";
           }
