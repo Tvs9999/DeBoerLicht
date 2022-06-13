@@ -12,7 +12,7 @@ $totaalprijs = $_GET['totaalprijs'];
 
 $receiver = array($email, 'kevinka1239@gmail.com');
 $subject="Uw bestelling is onderweg";
-$body = "Beste $naam, \r\nUw bestelling op $datum voor $aantal aan lampen
+$body = "Beste $Voornaam $Achternaam , \r\nUw bestelling op $Datum voor $totaalprijs is onderweg
 U krijgt het binnen 1 dag.
 Veel plezier!
 
@@ -21,12 +21,12 @@ DeBoerLicht";
 
 if(mail(implode(',',$receiver), $subject, $body)){
   ?>
-  <META HTTP-EQUIV="Refresh" CONTENT="0; URL=https://p21t4.lesonline.nu/admin(orderoverzicht).php">
+  <META HTTP-EQUIV="Refresh" CONTENT="0; URL=">
   <?php
 }
 
 
-include("conn.php");
+include("connection.phpb");
 error_reporting(0);
 
 $query1 = "DELETE FROM bestelling WHERE naam='$naam' && aantal='$aantal' && telef='$telef' && email='$email'";
@@ -39,16 +39,8 @@ if($data1){
     <META HTTP-EQUIV="Refresh" CONTENT="0; URL=">
     <?php
 }else{
-    echo "<script>alert('Sorry, bestelling versturen is mislukt, Probeer het late opnieuw')</script>";
+    echo "<script>alert('Sorry, bestelling versturen is op het moment niet gelukt, Probeer het op een ander tijsstip weer')</script>";
 }
 ?>
 
 
-<td>".$result['Voornaam']."</td>
-                <td>".$result['Achternaam']."</td>
-                <td>".$result['Datum']."</td>
-                <td>".$result['email']."</td>
-                <td>".$result['adres']."</td>
-                <td>".$result['Woonplaats']."</td>
-                <td>".$result['Postcode']."</td>
-                <td>".$result['totaalprijs']."</td>
