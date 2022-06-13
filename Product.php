@@ -29,6 +29,7 @@ include 'connection.php';
                         <div class="product-info">
                             <h2 class="product-naam"><?php echo $row['naam']; ?></h2>
                             <h2 class="product-prijs"><?php echo "€ ".$row['prijs']; ?></h2>
+                            <button class="voeg-toe-button">Voeg toe</button>
                         </div>
                     </div>
                     <?php } ?>
