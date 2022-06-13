@@ -14,87 +14,88 @@ session_start();
 </head>
 
 <body>
-  <div class="sidebar">
-    <?php if (isset($_SESSION['admin_name']) || isset($_SESSION['user_name'])) { ?>
-      <div class="logo_content">
-      <div class="logo">
-        <img src="https://www.deboerlicht.nl/wp-content/uploads/2020/02/De-Boer-Licht-Logo-Wit-1024x771.png">
-      </div>
-      <i class='bx bx-menu' id="btn"></i>
-    </div>
-    <ul class="nav_list">
-
-    <li>
-        <i class='bx bx-search' ></i>
-        <input type="text" placeholder="search">
-      </li>
-
-      <li>
-          <a href="#">
-          <i class='bx bx-home' ></i>
-          <span class="links-name">Producten</span>
-          </a>
-      </li>
-
-      <li>
-          <a href="#">
-          <i class='bx bx-list-check' ></i>
-          <span class="links-name">Orders</span>
-          </a>
-      </li>
-
-      <li>
-          <a href="#">
-          <i class='bx bx-category' ></i>
-          <span class="links-name">Categorieën</span>
-          </a>
-      </li>
-
-      <li>
-          <a href="#">
-          <i class='bx bx-plus-circle'></i>
-          <span class="links-name">Toevoegen</span>
-          </a>
-      </li>
-
-      <div class="login">
-        <li>
-          <a href="#">
-          <i class='bx bx-log-out' ></i>
-          <span class="links-name">Uitloggen</span>
-          </a>
-        </li>
-      </div>
-    </ul>
-    <?php } else { ?>
-      <div class="logo_content">
+    <div class="sidebar">
+      <?php if (isset($_SESSION['admin_name']) || isset($_SESSION['user_name'])) { ?>
+        <div class="logo_content">
         <div class="logo">
           <img src="https://www.deboerlicht.nl/wp-content/uploads/2020/02/De-Boer-Licht-Logo-Wit-1024x771.png">
         </div>
         <i class='bx bx-menu' id="btn"></i>
       </div>
       <ul class="nav_list">
-        <li>
+
+      <li>
           <i class='bx bx-search' ></i>
           <input type="text" placeholder="search">
         </li>
-        
+
         <li>
-          <a href="#">
-            <i class='bx bx-home' ></i>
-            <span class="links-name">Home</span>
-          </a>
-        </li>
-        
-        <div class="login">
-          <li >
             <a href="#">
-              <i class='bx bx-log-in' ></i>
+            <i class='bx bx-home' ></i>
+            <span class="links-name">Producten</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+            <i class='bx bx-list-check' ></i>
+            <span class="links-name">Orders</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+            <i class='bx bx-category' ></i>
+            <span class="links-name">Categorieën</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+            <i class='bx bx-plus-circle'></i>
+            <span class="links-name">Toevoegen</span>
+            </a>
+        </li>
+
+        <div class="login">
+          <li>
+            <a href="#">
+            <i class='bx bx-log-out' ></i>
+            <span class="links-name">Uitloggen</span>
             </a>
           </li>
-      </div>
-    </ul>
-    <?php } ?>
+        </div>
+      </ul>
+      <?php } else { ?>
+        <div class="logo_content">
+          <div class="logo">
+            <img src="https://www.deboerlicht.nl/wp-content/uploads/2020/02/De-Boer-Licht-Logo-Wit-1024x771.png">
+          </div>
+          <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav_list">
+          <li>
+            <i class='bx bx-search' ></i>
+            <input type="text" placeholder="search">
+          </li>
+          
+          <li>
+            <a href="#">
+              <i class='bx bx-home' ></i>
+              <span class="links-name">Home</span>
+            </a>
+          </li>
+          
+          <div class="login">
+            <li >
+              <a href="#">
+                <i class='bx bx-log-in' ></i>
+              </a>
+            </li>
+        </div>
+      </ul>
+      <?php } ?>
+    </div>
   </div>
 </body>
 
