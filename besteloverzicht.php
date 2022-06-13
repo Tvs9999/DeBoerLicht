@@ -17,7 +17,7 @@ include("header.php");
   <div class="apparatuuroverzicht-tabel">
     <table>
       <tr>
-        <th hidden>id</th>
+        
         <th>Voornaam</th>
         <th>Achternaam	</th>
         <th>Datum</th>
@@ -31,15 +31,16 @@ include("header.php");
 
       </tr>
       <?php
-        error_reporting(0);
-        $query= "SELECT * FROM bestellingen ";
-        $data = mysqli_query($conn,$query);
-        $total = mysqli_num_rows($data);
-        if($total!=0){
-          while($result=mysqli_fetch_assoc($data)){
+       error_reporting(0);
+       $query= "SELECT * FROM bestellingen";
+       $data = mysqli_query($conn,$query);
+       $total = mysqli_num_rows($data);
+       if($total!=0){
+         while($result=mysqli_fetch_assoc($data)){
               echo "
+            
               <tr>
-                <td hidden>".$result['id']."</td> 
+                
                 <td>".$result['Voornaam']."</td>
                 <td>".$result['Achternaam']."</td>
                 <td>".$result['Datum']."</td>
@@ -48,9 +49,9 @@ include("header.php");
                 <td>".$result['Woonplaats']."</td>
                 <td>".$result['Postcode']."</td>
                 <td>".$result['totaalprijs']."</td>
-                <td>
-                  <a href='update.php?id=$result[id]&Voornaam=$result[Voornaam]&Achternaam=$result[Achternaam]&Datum=$result[Datum]&email=$result[email]&adres=$result[adres]&Woonplaats=$result[Woonplaats]&Postcode=$result[Postcode]&totaalprijs=$result[totaalprijs]'> 
-                </td>      
+                
+                
+                <td><a href='mail.php?Voornaam=$result[Voornaam]&Achternaam=$result[Achternaam]&Datum=$result[Datum]&email=$result[email]&adres=$result[adres]&totaalprijs=$result[totaalprijs' onclick='return checkdelete()'><input type='submit' value='goedkeuren' id='deletebtn'></a></td>                     
               </tr>
               ";
           }
@@ -65,5 +66,14 @@ include("header.php");
      </table>
   </div>
 
+
+</table>
+
+  
 </body>
+<script>
+function checkdelete(){
+  return confirm('Weet je zeker dat je deze bestelling hebt verzonden?');
+}
+</script>
 </html>
