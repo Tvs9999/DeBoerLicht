@@ -306,3 +306,40 @@ text-align: center;
 .apparatuuroverzicht-tabel th {
   background-color: #ddd;
 }
+
+.categorie-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 50px;
+  gap: 20px 30px
+}
+
+.categorie{
+  height: 300px;
+  max-height: 300px;
+}
+
+.categorie-links{
+  grid-area: 1 / 1 / 1 / 2;
+  background-color: #d7b32e;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.categorie-foto{
+  border-radius: 15px;
+  width: 20%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.categorie{
+  border: solid 2px black;
+}
+
+.categorie-naam{
+  text-align: center;
+  font-size: 40px;
+  padding-bottom: 5px;
+}
