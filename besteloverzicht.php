@@ -17,7 +17,7 @@ include("header.php");
   <div class="apparatuuroverzicht-tabel">
     <table>
       <tr>
-        
+        <th hidden>status</th>
         <th>Voornaam</th>
         <th>Achternaam	</th>
         <th>Datum</th>
@@ -37,10 +37,11 @@ include("header.php");
        $total = mysqli_num_rows($data);
        if($total!=0){
          while($result=mysqli_fetch_assoc($data)){
+           
               echo "
             
               <tr>
-                
+                <td hidden>".$result['status']."</td>
                 <td>".$result['Voornaam']."</td>
                 <td>".$result['Achternaam']."</td>
                 <td>".$result['Datum']."</td>
