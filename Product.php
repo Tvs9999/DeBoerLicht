@@ -77,7 +77,7 @@ include 'connection.php';
             } ?>            
         </div> 
         <div class="sidebar-left">
-            <?php include 'header.php'?>
+            <?php include 'Sidebar.php'?>
         </div>
     </div>
 </body>

@@ -61,6 +61,10 @@ pointer-events: none;
   font-weight:400;
 }
 
+.logo_content i:hover{
+  cursor: pointer;
+}
+
 .sidebar #btn{
   position:absolute;
   color:#fff;
@@ -78,18 +82,19 @@ pointer-events: none;
   left: 90%;
 }
 
-.sidebar ul{
-  margin-top: 20px;
+
+
+.nav_list{
+  margin-top: 10px;
 }
 
 .sidebar ul li{
   position: relative;
   height: 50px;
   width: 100%;
-  margin: 0 5px;
   list-style: none;
   line-height: 50px;
-  
+  color: white;
 }
 
 .sidebar ul li input{
@@ -198,7 +203,7 @@ pointer-events: none;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 300px;
   gap: 20px 30px;
-  padding: 20px 50px;
+  padding: 40px 50px;
   max-width: 100vw;
 }
 

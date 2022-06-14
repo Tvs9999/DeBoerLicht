@@ -10,8 +10,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="DeBoerLicht.css">
+  <link 
+  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+  rel="stylesheet"  type='text/css'>
+  <script src="https://kit.fontawesome.com/f1bb87abfd.js" crossorigin="anonymous"></script>
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
 </head>
 
 <body>
@@ -25,11 +30,6 @@
       </div>
       <ul class="nav_list">
 
-      <li>
-          <i class='bx bx-search' ></i>
-          <input type="text" placeholder="search">
-        </li>
-
         <li>
             <a href="#">
             <i class='bx bx-home' ></i>
@@ -38,7 +38,7 @@
         </li>
 
         <li>
-            <a href="#">
+          <a href="#">
             <i class='bx bx-list-check' ></i>
             <span class="links-name">Orders</span>
             </a>
@@ -75,15 +75,18 @@
           <i class='bx bx-menu' id="btn"></i>
         </div>
         <ul class="nav_list">
-          <li>
-            <i class='bx bx-search' ></i>
-            <input type="text" placeholder="search">
-          </li>
           
           <li>
             <a href="#">
               <i class='bx bx-home' ></i>
               <span class="links-name">Home</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+            <i class="far fa-cart-shopping"></i>
+            <span class="links-name">Home</span>
             </a>
           </li>
           
