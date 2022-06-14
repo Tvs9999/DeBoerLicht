@@ -336,3 +336,117 @@ text-align: center;
 .apparatuuroverzicht-tabel th {
   background-color: #ddd;
 }
+
+.categorie-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 50px;
+  gap: 20px 30px
+}
+
+.categorie{
+  height: 300px;
+  max-height: 300px;
+}
+
+.categorie-links{
+  grid-area: 1 / 1 / 1 / 2;
+  background-color: #d7b32e;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.categorie-foto{
+  border-radius: 15px;
+  width: 20%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.categorie{
+  border: solid 2px black;
+}
+
+.categorie-naam{
+  text-align: center;
+  font-size: 40px;
+  padding-bottom: 5px;
+}
+
+/* Toevoegen popup */
+.toevoegen {
+  display: none; 
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+/* Modal Content */
+.toevoegen-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 25%;
+}
+/* bewerken popup */
+.bewerken {
+  display: none; 
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+/* Modal Content */
+.bewerken-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 25%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* The Close Button */
+.close2 {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close2:hover,
+.close2:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
