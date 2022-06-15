@@ -10,7 +10,7 @@ include("connection.php");
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="DeBoerLicht.css">
-  <title>besteloverzicht</title>
+  <title>categories</title>
 </head>
 <body>
     <div class="container">
@@ -22,18 +22,30 @@ include("connection.php");
                 $total = mysqli_num_rows($data);
                     if($total!=0){
                         while($result=mysqli_fetch_assoc($data)){ ?>
-                            <div class="categorie">
-                                <div class="categorie-links">
-                              
-                                    <img src="UploadImg/no-image.png" alt="" class="categorie-foto">
-                                    <h2 class="categorie-naam"><?php echo $row['naam']; ?></h2>
-                                </div>                               
-                            </div>
+                                    <a href="product.php?categorie=<?php echo $result['id'];?>">
+                                        <div class="categorie">
+                                            <div class="categorie-top">
+                                                <h2 class="categorie-naam"><?php echo $result['naam']; ?></h2>   
+                                            </div>
+                                            <div class="categorie-bottom">
+                                                <?php
+                                                    echo "<img src='UploadImg/".($result['foto'])."' class = 'categorie-foto'>";
+                                                ?>                            
+                                            </div>   
+                                        </div>
+                                    </a>
+
+
+                                        
+                                     
+
                         <?php }
-                    } ?>            
+                    } ?>  
+                    
+                    
         </div>
         <div class="sidebar-left">
-            <?php include 'header.php' ?>
+            <?php include 'sidebar.php' ?>
         </div>
     </div>
 </body>

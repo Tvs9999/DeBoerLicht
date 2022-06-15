@@ -19,7 +19,11 @@ include 'connection.php';
     <div class="container">
         <div class="product-container">
             <?php 
-            $sql = "SELECT * FROM producten";
+
+            // wat is het id van de huidige cat. 
+            // catId = 2.
+            $catId = $_GET['categorie'];
+            $sql = "SELECT * FROM producten where catId = $catId";
             $results = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($results);
 
@@ -39,7 +43,7 @@ include 'connection.php';
                                 <div class="info-links">
                                     <p class="info-type">Type:</p>
                                     <p class="info-voltage">Voltage:</p>
-                                    <p class="info-categorie">Categorie:</p>                                
+                                    <p class="info-categorie">categorie:</p>                                
                                 </div>
                                 <div class="info-rechts">
                                     <p class="type-inhoud"><?php echo $row['type'] ?></p>
@@ -77,7 +81,7 @@ include 'connection.php';
             } ?>            
         </div> 
         <div class="sidebar-left">
-            <?php include 'header.php'?>
+            <?php include 'sidebar.php'?>
         </div>
     </div>
 </body>
