@@ -1,6 +1,6 @@
 <?php
 include("connection.php");
-include("header.php"); 
+include("Sidebar.php"); 
 ?>
 
 <!DOCTYPE html>
@@ -21,11 +21,11 @@ include("header.php");
         <th>Voornaam</th>
         <th>Achternaam	</th>
         <th>Datum</th>
-        <th>email</th>
-        <th>adres</th>
+        <th>Email</th>
+        <th>Adres</th>
         <th>Woonplaats</th>
         <th>Postcode</th>
-        <th>totaalprijs	</th>
+        <th>Totaalprijs	</th>
         <th colspan="2" align="center" >Opties</th>
     
         							
