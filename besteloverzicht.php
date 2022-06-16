@@ -26,6 +26,7 @@ include("header.php");
         <th>Woonplaats</th>
         <th>Postcode</th>
         <th>totaalprijs	</th>
+        <th colspan="2" align="center" >Opties</th>
     
         							
 
@@ -52,7 +53,10 @@ include("header.php");
                 <td>".$result['totaalprijs']."</td>
                 
                 
-                <td><a href='mail.php?Voornaam=$result[Voornaam]&Achternaam=$result[Achternaam]&Datum=$result[Datum]&email=$result[email]&adres=$result[adres]&totaalprijs=$result[totaalprijs]' onclick='return checkdelete()'><input type='submit' value='goedkeuren' id='deletebtn'></a></td>                     
+                <td>
+                <a href='mail.php?Voornaam=$result[Voornaam]&Achternaam=$result[Achternaam]&Datum=$result[Datum]&email=$result[email]&adres=$result[adres]&totaalprijs=$result[totaalprijs]' onclick='return checkdelete()'><input type='submit' value='Goedkeuren' id='deletebtn'></a>
+                <a href='delete.php?Voornaam=$result[Voornaam]&Achternaam=$result[Achternaam]&Datum=$result[Datum]&email=$result[email]&adres=$result[adres]&totaalprijs=$result[totaalprijs]' onclick='return checkdelete2()'><input type='submit' value='Annuleren' id='annuleren-btn'></a>
+                </td>                     
               </tr>
               ";
           }
@@ -75,6 +79,9 @@ include("header.php");
 <script>
 function checkdelete(){
   return confirm('Weet je zeker dat je deze bestelling hebt verzonden?');
+}
+function checkdelete2(){
+  return confirm('Weet je zeker dat je deze bestelling wil annuleren?');
 }
 </script>
 </html>
