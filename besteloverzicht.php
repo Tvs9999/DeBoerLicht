@@ -63,7 +63,7 @@ include("header.php");
         }else{
             echo "
             <tr>
-            <td>geen bestellingen</td>
+            <td colspan='9' align='center'>Geen Bestellingen</td>
             </tr>
             ";
           }
