@@ -193,7 +193,6 @@ pointer-events: none;
 }
 
 .sidebar-left{
-
   grid-area: 1 / 1 / 1 / 2;
 }
 
@@ -462,3 +461,122 @@ text-align: center;
   text-decoration: none;
   cursor: pointer;
 }
+
+.cart-container{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr;
+  grid-auto-flow: row;
+}
+
+.cart{
+  grid-area: 1 / 1 / 1 / 1;
+  display: grid;
+  grid-template-rows: 1fr 8fr;
+  padding: 0 50px;
+}
+
+.total{
+  background-color: #11101d;
+  grid-area: 1 / 2 / 1 / 2;
+}
+
+.uw-winklemandje{
+  grid-area: 1 / 1 / 1 / 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.uw-winklemandje h1{
+  color: #11101d
+}
+
+.totaalprijs{
+  color: white;
+}
+
+.cart-product{
+  grid-area: 2 / 1 / 2 / 1;
+  padding: 20px 0;
+}
+
+.geen-items{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.geen-items p{
+  font-family: "Raleway", sans-serif;
+  color: lightgrey;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+.in-cart-product{
+  display: grid;
+  grid-template-columns: 170px auto;
+  border-radius: 12px;
+  height: 170px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.cart-foto{
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+}
+
+.in-cart-right{
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  margin-left: 30px;
+}
+
+.in-cart-right h2{
+  font-family: "Raleway", sans-serif;
+  color: #11101d;
+}
+
+.in-cart-right p{
+  font-family: "Raleway", sans-serif;
+}
+
+.right-main{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
+}
+
+.in-cart-naam{
+  grid-area: 1 / 1 / 2 / 3;
+  font-size: 20px;
+}
+
+.right-info{
+ grid-area: 2 / 1 / 2 / 2;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ grid-template-rows: 1fr 1fr 1fr; 
+}
+
+.right-info-text{
+  display: flex;
+  align-items: center;
+  color: #11101d;
+}
+
+.right-info-voorraad{
+  display: flex;
+  align-items: center;
+  grid-area: 3 / 1 / 4 / 2;
+}
+
