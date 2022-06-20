@@ -368,10 +368,15 @@ text-align: center;
   width: 100%;
   object-fit: cover;
   object-position: center;
+  text-decoration: none;
 }
 
 .categorie{
   border: solid 2px black;
+}
+
+.categorie-container a{
+  text-decoration: none;
 }
 
 .categorie-naam{
