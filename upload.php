@@ -8,7 +8,7 @@ $prijs = $_POST['price'];
 $korting = $_POST['korting'];
 $type = $_POST['type'];
 $voltage = $_POST['voltage'];
-$categorie = $_POST['categorie'];
+$catId = $_POST['catId'];
 $beschikbaarheid = $_POST['beschikbaarheid'];
 $target_file = $fileDestination . basename($_FILES["file1"]["name"]);
 $target_file2 = $fileDestination2 . basename($_FILES["file2"]["name"]);
@@ -47,7 +47,7 @@ if (isset($_POST['submit'])) {
                 $fileDestination2 = 'upload/'.$fileNameNew2;
                 move_uploaded_file($fileTmpName2, $fileDestination2);
 
-                $insertsql = "INSERT INTO `producten`(`id`, `naam`, `prijs`, `korting`, `type`, `voltage`, `categorie`, `beschikbaarheid`, `file1`, `file2`) VALUES ('$id','$naam','$prijs','$korting','$type','$voltage','$categorie','$beschikbaarheid .','$target_file','$target_file2')";
+                $insertsql = "INSERT INTO `producten`(`id`, `naam`, `prijs`, `korting`, `type`, `voltage`, `catId`, `beschikbaarheid`, `file1`, `file2`) VALUES ('$id','$naam','$prijs','$korting','$type','$voltage','$catId','$beschikbaarheid .','$target_file','$target_file2')";
                 $insert = $conn->query($insertsql);
                 header("Location: toevoegenvb.php");
                 echo "<script>alert('Product heeft toegevoegd')</script>";
