@@ -112,19 +112,6 @@ pointer-events: none;
   color: #fff;
 }
 
-.sidebar ul li .bx-search{
-  position:absolute;
-  z-index:99;
-  color:#fff;
-  font-size:22px; 
-  transition: all 0.5s ease;
-}
-
-.sidebar ul li .bx-search:hover{
-  background: rgb(68, 15, 175);
-  color:#d7b32e;
-}
-
 .sidebar ul li a{
   display: flex;
   align-items: center;
@@ -136,7 +123,6 @@ pointer-events: none;
 }
 
 .sidebar ul li a:hover{
-  color: #d7b32e;
   background: rgb(68, 15, 175);
 }
 
@@ -235,6 +221,46 @@ pointer-events: none;
   padding: 10px 20px;
   display: grid;
   grid-template-rows: auto auto auto auto auto;
+  position: relative;
+}
+
+.ribbon{
+  position: absolute;
+  width: 80px;
+  height: 20px;
+  background: rgb(232, 0, 0);
+  top: 65px;
+  right: -6px;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.ribbon p{
+  position: absolute;
+  top: -1.5px;
+}
+
+.ribbon::before{
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 0;
+  border-left: 3px solid rgb(157, 0, 0);
+  border-right: 3px solid transparent;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid rgb(157, 0, 0);
+}
+.ribbon::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 10px solid #fff;
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
 }
 
 .product h2{
@@ -277,6 +303,16 @@ pointer-events: none;
 
 .geen-voorraad{
   color: red;
+}
+
+.korting-prijs{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.discount{
+  color: lightgrey;
 }
 
 .product-prijs{
@@ -598,7 +634,6 @@ text-align: center;
 
 .price{
   display: flex;
-  align-items: flex-end;
   justify-content: center;
   margin-bottom: 5px;
   font-size: 20px;
