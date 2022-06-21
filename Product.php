@@ -3,6 +3,7 @@ session_start();
 $product_ids = array();
 include 'connection.php';  
 
+$sql = "SELECT * FROM beheerder";
 $sql = "SELECT * FROM producten";
 $results = mysqli_query($conn, $sql);
 $resultCheck = mysqli_num_rows($results);
@@ -163,7 +164,9 @@ if(isset($_GET['action']) && isset($_GET['id'])){
                                     
                                 <?php }
                             ?>
+                            
                             <div class="voeg-toe">
+                                
                                 
                                 <input class="voeg-toe-button" type="submit" name="add_to_cart" value="Voeg toe"></input>
                                 <input type="hidden" name="prijs" value="<?php echo $row['prijs']; ?>">
@@ -182,7 +185,9 @@ if(isset($_GET['action']) && isset($_GET['id'])){
             } 
             
             else{ ?>
-                <h1>niks</h1>
+                <div class=" geen-producten">
+                    <h1>er zijn geen producten gevonden in deze categorie</h1>
+                </div>
             <?php } ?>            
         </div> 
         <div class="sidebar-left">

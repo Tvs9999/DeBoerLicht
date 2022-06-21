@@ -657,3 +657,11 @@ height: calc(100% - 73px);
 height: 100%;
 }
 }
+
+
+.geen-producten{
+position: absolute;
+margin-left: 150px;
+margin-top: 250px;
+
+}
