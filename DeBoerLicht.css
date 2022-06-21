@@ -364,19 +364,20 @@ text-align: center;
   display: flex;
 }
 
-.categorie-bottom{
-
-}
-
 .categorie-foto{
   height: 245px;
   width: 100%;
   object-fit: cover;
   object-position: center;
+  text-decoration: none;
 }
 
 .categorie{
   border: solid 2px black;
+}
+
+.categorie-container a{
+  text-decoration: none;
 }
 
 .categorie-naam{
@@ -640,3 +641,19 @@ text-align: center;
 
 
 
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
