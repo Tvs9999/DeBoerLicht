@@ -32,6 +32,7 @@ if(isset($_GET['action']) && isset($_GET['id'])){
                         'voltage' => filter_input(INPUT_POST, 'voltage'),
                         'categorie' => filter_input(INPUT_POST, 'categorie'),
                         'voorraad' => filter_input(INPUT_POST, 'voorraad'),
+                        'korting' => filter_input(INPUT_POST, 'korting'),
                     );
                 }
                 else {
@@ -55,6 +56,7 @@ if(isset($_GET['action']) && isset($_GET['id'])){
                     'voltage' => filter_input(INPUT_POST, 'voltage'),
                     'categorie' => filter_input(INPUT_POST, 'categorie'),
                     'voorraad' => filter_input(INPUT_POST, 'voorraad'),
+                    'korting' => filter_input(INPUT_POST, 'korting'),
                 );
             }
         }
@@ -91,9 +93,6 @@ if(isset($_GET['action']) && isset($_GET['id'])){
     <div class="container">
         <div class="product-container">
             <?php 
-
-            // wat is het id van de huidige cat. 
-            // catId = 2.
             $leCatNaam = $_GET['categorie'];
             $getCatId = "SELECT * FROM categorie WHERE naam = '$leCatNaam'";
             $cat = mysqli_query($conn, $getCatId);
@@ -122,6 +121,14 @@ if(isset($_GET['action']) && isset($_GET['id'])){
                             ?>
                         </div>
                         <div class="product-rechts">
+                            <?php 
+                                if($row['korting'] > 0){ ?>
+                                    <div class="ribbon">
+                                        <p>-<?php echo $row['korting']; ?>%</p>
+                                    </div>
+                                
+                                <?php }
+                            ?>
                             <h2 class="product-naam"><?php echo $row['naam']; ?></h2>
                             <div class="product-info">
                                 <div class="info-links">
@@ -155,19 +162,20 @@ if(isset($_GET['action']) && isset($_GET['id'])){
                                 ?>
                             </div>
                             <?php 
-                                if($row['korting'] == NULL || $row['korting'] == 0){ ?>
-                                    <h2 class="product-prijs"><?php echo "€ ".$row['prijs']; ?></h2>
-
+                                $prijsNaKorting = $row['prijs'] - ($row['prijs'] * ($row['korting'] / 100));
+                                if($row['korting'] > 0){ ?>
+                                <div class="korting-prijs">
+                                    <s class="discount"><h2><?php echo "€ ".number_format($row['prijs'], 2, ",", "."); ?></h2></s>
+                                    <h2 class="product-prijs"><?php echo "€ ".number_format($prijsNaKorting , 2, ",", "."); ?></h2>
+                                </div>
                                 <?php }
 
                                 else{ ?>
-                                    
+                                    <h2 class="product-prijs"><?php echo "€ ".number_format($row['prijs'], 2, ",", "."); ?></h2>
                                 <?php }
                             ?>
                             
                             <div class="voeg-toe">
-                                
-                                
                                 <input class="voeg-toe-button" type="submit" name="add_to_cart" value="Voeg toe"></input>
                                 <input type="hidden" name="prijs" value="<?php echo $row['prijs']; ?>">
                                 <input type="hidden" name="naam" value="<?php echo $row['naam']; ?>">
@@ -176,6 +184,7 @@ if(isset($_GET['action']) && isset($_GET['id'])){
                                 <input type="hidden" name="voltage" value="<?php echo $row['voltage']; ?>">
                                 <input type="hidden" name="categorie" value="<?php echo $categorie['naam']; ?>">
                                 <input type="hidden" name="voorraad" value="<?php echo $row['voorraad']; ?>">
+                                <input type="hidden" name="korting" value="<?php echo $row['korting']; ?>">
                                 <input type="text" name="quantity" class="aantal-input" value="1">                                
                             </div>
                         </div>
