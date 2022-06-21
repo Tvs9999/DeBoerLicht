@@ -75,7 +75,7 @@
         <ul class="nav_list">
           
           <li>
-            <a href="#">
+            <a href="index.php">
               <i class='bx bx-home' ></i>
               <span class="links-name">Home</span>
             </a>

@@ -289,6 +289,7 @@ pointer-events: none;
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr;
+  align-items: center;
 }
 
 .voeg-toe-button{
@@ -301,6 +302,7 @@ pointer-events: none;
   font-family: "Raleway", sans-serif;
   font-size: 18px;
   padding: 2px 5px;
+  height: 40px;
 }
 
 .voeg-toe-button:hover{
@@ -311,8 +313,12 @@ pointer-events: none;
 }
 
 .aantal-input{
-    grid-area: 1 / 2 / 1 / 2;
-    width: 50px;
+  grid-area: 1 / 2 / 1 / 2;
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  border-radius: 12px;
+  border: solid 2px #11101d
 }
 
 .apparatuuroverzicht-tabel{
@@ -467,20 +473,24 @@ text-align: center;
 .cart{
   grid-area: 1 / 1 / 1 / 1;
   display: grid;
-  grid-template-rows: 1fr 8fr;
+  grid-template-rows: 60px auto;
   padding: 0 50px;
 }
 
 .total{
   background-color: #11101d;
   grid-area: 1 / 2 / 1 / 2;
+  display: grid;
+  grid-template-rows: 60px auto;
 }
 
-.uw-winklemandje{
-  grid-area: 1 / 1 / 1 / 1;
-  height: 100%;
+.uw-winkelmandje{
   display: flex;
   justify-content: center;
+  align-items: center;
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  color: #11101d;
 }
 
 .uw-winklemandje h1{
@@ -489,6 +499,11 @@ text-align: center;
 
 .totaalprijs{
   color: white;
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
 }
 
 .cart-product{
@@ -532,7 +547,7 @@ text-align: center;
 
 .in-cart-right{
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 3fr 1fr;
   margin-left: 30px;
 }
 
@@ -574,4 +589,54 @@ text-align: center;
   align-items: center;
   grid-area: 3 / 1 / 4 / 2;
 }
+
+.right-price{
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+}
+
+.price{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.hoeveelheid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-aantal{
+  height: 40px;
+  width: 50px;
+  margin-right: 5px;
+  text-align: center;
+  border-radius: 12px;
+  border: solid 2px #11101d
+}
+
+.delete-btn{
+  border: none;
+  background-color: #11101d;
+  cursor: pointer;
+  margin-left: 5px;
+  height: 40px;
+  width: 40px;
+  border-radius: 12px;
+}
+
+.delete-btn:hover{
+  background-color: rgb(68, 15, 175);
+  transition: .5s ease;
+}
+
+.delete-btn i{
+  color: white;
+  font-size: 15px;
+}
+
+
 

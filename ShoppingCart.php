@@ -75,26 +75,27 @@ if(isset($_SESSION['shopping_cart'])){
                 
                                                     else if($product["voorraad"] > 0 && $product["voorraad"] < 5) 
                                                     { ?>
-                                                        <p class="product-voorraad"><i class="fas fa-circle fa-xs"></i> Nog maar <?php echo $product['voorraad'] ?> op voorraad</p>
+                                                        <p class="product-voorraad"><i class="fa fa-circle fa-xs"></i> Nog maar <?php echo $product['voorraad'] ?> op voorraad</p>
                                                     <?php }
 
                                                     else if($product["voorraad"] == 0)
                                                     { ?>
-                                                        <p class="geen-voorraad"><i class="fas fa-times"></i> Niet meer op voorraad</p>
+                                                        <p class="geen-voorraad"><i class="fa fa-times"></i> Niet meer op voorraad</p>
                                                     <?php }
                                                 ?>
                                                 
                                             </div>
-                                            
-                                            
-                                            
-                
-
                                         </div>
                                         <div class="right-price">
-                                            <p class="in-cart-prijs"><?php echo $product['prijs']; ?></p> 
-                                            <input type="text" name="quantity" class="aantal-input" value="<?php echo $product['quantity']?>">
-                                            <button></button>
+                                            <div class="price">
+
+                                                <h2 class="in-cart-prijs"><?php echo $product['prijs']; ?></h2> 
+                                            </div>
+                                            <div class="hoeveelheid">
+
+                                                <input type="text" name="quantity" class="cart-aantal" value="<?php echo $product['quantity']?>">
+                                                <button class="delete-btn"><i class='bx bx-trash-alt' ></i></button>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -112,7 +113,10 @@ if(isset($_SESSION['shopping_cart'])){
                 </div>
             </div>
             <div class="total">
-                <h1 class="totaalprijs">Totaalprijs</h1>
+                <div class="totaalprijs">
+                    <h1>Totaalprijs</h1>
+                </div>
+                
             </div>
         </div>
         <div class="sidebar-left">

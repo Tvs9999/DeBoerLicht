@@ -7,48 +7,58 @@ $sql = "SELECT * FROM producten";
 $results = mysqli_query($conn, $sql);
 $resultCheck = mysqli_num_rows($results);
 
-if(filter_input(INPUT_POST, 'add_to_cart')){
-    if(isset($_SESSION['shopping_cart'])){
-        $count = count($_SESSION['shopping_cart']);
 
-        $product_ids = array_column($_SESSION['shopping_cart'], 'id');
-        
-        if(!in_array(filter_input(INPUT_GET, 'id'), $product_ids)){
-            $_SESSION['shopping_cart'][$count] = array
-            (
-                'id' => filter_input(INPUT_GET, 'id'),
-                'naam' => filter_input(INPUT_POST, 'naam'),
-                'prijs' => filter_input(INPUT_POST, 'prijs'),
-                'quantity' => filter_input(INPUT_POST, 'quantity'),
-                'Foto1' => filter_input(INPUT_POST, 'Foto1'),
-                'type' => filter_input(INPUT_POST, 'type'),
-                'voltage' => filter_input(INPUT_POST, 'voltage'),
-                'categorie' => filter_input(INPUT_POST, 'categorie'),
-                'voorraad' => filter_input(INPUT_POST, 'voorraad'),
-            );
-        }
-        else {
-            for($i = 0; $i < count($product_ids); $i++){
-                if ($product_ids[$i] == filter_input(INPUT_GET, 'id')){
-                    $_SESSION['shopping_cart'][$i]['quantity'] += filter_input(INPUT_POST, 'quantity');
+if(isset($_GET['action']) && isset($_GET['id'])){
+    if($_GET['action'] == 'add'){
+        $id = $_GET['id'];
+        $getProduct = "SELECT * FROM producten WHERE id = $id";
+        //Voeg toe
+        if(filter_input(INPUT_POST, 'add_to_cart')){
+            if(isset($_SESSION['shopping_cart'])){
+                $count = count($_SESSION['shopping_cart']);
+                
+                $product_ids = array_column($_SESSION['shopping_cart'], 'id');
+                
+                if(!in_array(filter_input(INPUT_GET, 'id'), $product_ids)){
+                    $_SESSION['shopping_cart'][$count] = array
+                    (
+                        'id' => filter_input(INPUT_GET, 'id'),
+                        'naam' => filter_input(INPUT_POST, 'naam'),
+                        'prijs' => filter_input(INPUT_POST, 'prijs'),
+                        'quantity' => filter_input(INPUT_POST, 'quantity'),
+                        'Foto1' => filter_input(INPUT_POST, 'Foto1'),
+                        'type' => filter_input(INPUT_POST, 'type'),
+                        'voltage' => filter_input(INPUT_POST, 'voltage'),
+                        'categorie' => filter_input(INPUT_POST, 'categorie'),
+                        'voorraad' => filter_input(INPUT_POST, 'voorraad'),
+                    );
+                }
+                else {
+                    for($i = 0; $i < count($product_ids); $i++){
+                        if ($product_ids[$i] == filter_input(INPUT_GET, 'id')){
+                            $_SESSION['shopping_cart'][$i]['quantity'] += filter_input(INPUT_POST, 'quantity');
+                        }
+                    }
                 }
             }
+            
+            else{
+                $_SESSION['shopping_cart'][0] = array
+                (
+                    'id' => filter_input(INPUT_GET, 'id'),
+                    'naam' => filter_input(INPUT_POST, 'naam'),
+                    'prijs' => filter_input(INPUT_POST, 'prijs'),
+                    'quantity' => filter_input(INPUT_POST, 'quantity'),
+                    'Foto1' => filter_input(INPUT_POST, 'Foto1'),
+                    'type' => filter_input(INPUT_POST, 'type'),
+                    'voltage' => filter_input(INPUT_POST, 'voltage'),
+                    'categorie' => filter_input(INPUT_POST, 'categorie'),
+                    'voorraad' => filter_input(INPUT_POST, 'voorraad'),
+                );
+            }
         }
-    }
-
-    else{
-        $_SESSION['shopping_cart'][0] = array
-        (
-            'id' => filter_input(INPUT_GET, 'id'),
-            'naam' => filter_input(INPUT_POST, 'naam'),
-            'prijs' => filter_input(INPUT_POST, 'prijs'),
-            'quantity' => filter_input(INPUT_POST, 'quantity'),
-            'Foto1' => filter_input(INPUT_POST, 'Foto1'),
-            'type' => filter_input(INPUT_POST, 'type'),
-            'voltage' => filter_input(INPUT_POST, 'voltage'),
-            'categorie' => filter_input(INPUT_POST, 'categorie'),
-            'voorraad' => filter_input(INPUT_POST, 'voorraad'),
-        );
+        //header redirect
+        header("Location: Product.php?categorie=".$_GET['categorie']);
     }
 }
 
@@ -83,16 +93,27 @@ if(filter_input(INPUT_POST, 'add_to_cart')){
 
             // wat is het id van de huidige cat. 
             // catId = 2.
-            $catId = $_GET['categorie'];
-            $sql = "SELECT * FROM producten where catId = $catId";
+            $leCatNaam = $_GET['categorie'];
+            $getCatId = "SELECT * FROM categorie WHERE naam = '$leCatNaam'";
+            $cat = mysqli_query($conn, $getCatId);
+            $catRow = mysqli_fetch_array($cat);
+
+            $catId = $catRow['id'];
+
+            $sql = "SELECT * FROM producten WHERE catId = $catId";
             $results = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($results);
 
+            
             if($resultCheck > 0) 
             {
                 while ($row = mysqli_fetch_array($results))
-                { ?>
-                <form method="post" action="Product.php?actioin=add&id=<?php echo $row['id']; ?>">
+                { 
+                    $query = "SELECT naam FROM categorie WHERE id = $catId";
+                    $catNaam = mysqli_query($conn, $query);
+                    $categorie = mysqli_fetch_array($catNaam);
+                    ?>
+                <form method="post" action="Product.php?categorie=<?php echo $_GET['categorie'] ?>&action=add&id=<?php echo $row['id']; ?>">
                     <div class="product">
                         <div class="product-links">
                             <?php
@@ -110,7 +131,7 @@ if(filter_input(INPUT_POST, 'add_to_cart')){
                                 <div class="info-rechts">
                                     <p class="type-inhoud"><?php echo $row['type'] ?></p>
                                     <p class="voltage-inhoud"><?php echo $row['voltage'] ?> V</p>
-                                    <p class="categorie-inhoud"><?php echo $row['categorie'] ?></p>
+                                    <p class="categorie-inhoud"><?php echo $categorie['naam'] ?></p>
                                 </div>
                             </div>
                             <div class="voorraad">
@@ -123,24 +144,34 @@ if(filter_input(INPUT_POST, 'add_to_cart')){
 
                                     else if($row["voorraad"] > 0 && $row["voorraad"] < 5) 
                                     { ?>
-                                        <p class="product-voorraad"><i class="fas fa-circle fa-xs"></i> Nog maar <?php echo $row['voorraad'] ?> op voorraad</p>
+                                        <p class="product-voorraad"><i class="fa fa-circle fa-xs"></i> Nog maar <?php echo $row['voorraad'] ?> op voorraad</p>
                                     <?php }
 
                                     else if($row["voorraad"] == 0)
                                     { ?>
-                                        <p class="geen-voorraad"><i class="fas fa-times"></i> Niet meer op voorraad</p>
+                                        <p class="geen-voorraad"><i class="fa fa-times"></i> Niet meer op voorraad</p>
                                     <?php }
                                 ?>
                             </div>
-                            <h2 class="product-prijs"><?php echo "€ ".$row['prijs']; ?></h2>
+                            <?php 
+                                if($row['korting'] == NULL || $row['korting'] == 0){ ?>
+                                    <h2 class="product-prijs"><?php echo "€ ".$row['prijs']; ?></h2>
+
+                                <?php }
+
+                                else{ ?>
+                                    
+                                <?php }
+                            ?>
                             <div class="voeg-toe">
+                                
                                 <input class="voeg-toe-button" type="submit" name="add_to_cart" value="Voeg toe"></input>
                                 <input type="hidden" name="prijs" value="<?php echo $row['prijs']; ?>">
                                 <input type="hidden" name="naam" value="<?php echo $row['naam']; ?>">
                                 <input type="hidden" name="Foto1" value="<?php echo $row['Foto1']; ?>">
                                 <input type="hidden" name="type" value="<?php echo $row['type']; ?>">
                                 <input type="hidden" name="voltage" value="<?php echo $row['voltage']; ?>">
-                                <input type="hidden" name="categorie" value="<?php echo $row['categorie']; ?>">
+                                <input type="hidden" name="categorie" value="<?php echo $categorie['naam']; ?>">
                                 <input type="hidden" name="voorraad" value="<?php echo $row['voorraad']; ?>">
                                 <input type="text" name="quantity" class="aantal-input" value="1">                                
                             </div>
@@ -148,7 +179,11 @@ if(filter_input(INPUT_POST, 'add_to_cart')){
                     </div>
                 </form>
                 <?php } 
-            } ?>            
+            } 
+            
+            else{ ?>
+                <h1>niks</h1>
+            <?php } ?>            
         </div> 
         <div class="sidebar-left">
             <?php include 'Sidebar.php'?> 

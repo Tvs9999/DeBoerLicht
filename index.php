@@ -22,7 +22,7 @@ include("connection.php");
                 $total = mysqli_num_rows($data);
                     if($total!=0){
                         while($result=mysqli_fetch_assoc($data)){ ?>
-                                    <a href="product.php?categorie=<?php echo $result['id'];?>">
+                                    <a href="product.php?categorie=<?php echo $result['naam'];?>">
                                         <div class="categorie">
                                             <div class="categorie-top">
                                                 <h2 class="categorie-naam"><?php echo $result['naam']; ?></h2>   
