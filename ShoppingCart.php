@@ -27,9 +27,6 @@ if(isset($_SESSION['shopping_cart'])){
                     <div class="cart-product">
                         <?php 
                         if(!empty($_SESSION['shopping_cart'])){
-                            
-                                
-                            
                             foreach($_SESSION['shopping_cart'] as $sessionId){
                                 $id = $sessionId['id'];
                                 $sql = "SELECT * FROM producten WHERE id = $id";
@@ -149,7 +146,31 @@ if(isset($_SESSION['shopping_cart'])){
                 <div class="totaalprijs">
                     <h1>Totaalprijs</h1>
                 </div>
-                
+                <div class="prijzen">
+
+                    <?php
+                    if(!empty($_SESSION['shopping_cart'])){
+                        foreach($_SESSION['shopping_cart'] as $sessionId){
+                            $id = $sessionId['id'];
+                            $sql = "SELECT * FROM producten WHERE id = $id";
+                            $results = mysqli_query($conn, $sql);
+                            $resultCheck = mysqli_num_rows($results);
+                            
+                            if($resultCheck > 0){
+
+                                while($product = mysqli_fetch_array($results)){ 
+                                    if($product['korting' > 0]){?>
+                                        
+                                    <?php }
+
+                                    
+                                }
+                            }
+
+                        }
+                    }
+                    ?>
+                </div>
             </div>
         </div>
         <div class="sidebar-left">
