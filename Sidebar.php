@@ -18,9 +18,9 @@
 </head>
 
 <body>
-    <div class="sidebar">
-      <?php if (isset($_SESSION['admin_name']) || isset($_SESSION['user_name'])) { ?>
-        <div class="logo_content">
+  <div class="sidebar">
+    <?php if (isset($_SESSION['admin_name']) || isset($_SESSION['user_name'])) { ?>
+      <div class="logo_content">
         <div class="logo">
           <img src="https://www.deboerlicht.nl/wp-content/uploads/2020/02/De-Boer-Licht-Logo-Wit-1024x771.png">
         </div>
@@ -29,85 +29,91 @@
       <ul class="nav_list">
 
         <li>
-            <a href="#">
-            <i class='bx bx-home' ></i>
+          <a href="#">
+            <i class='bx bx-home'></i>
             <span class="links-name">Producten</span>
-            </a>
+          </a>
         </li>
 
         <li>
           <a href="#">
-            <i class='bx bx-list-check' ></i>
+            <i class='bx bx-list-check'></i>
             <span class="links-name">Orders</span>
-            </a>
+          </a>
         </li>
 
         <li>
-            <a href="#">
-            <i class='bx bx-category' ></i>
+          <a href="#">
+            <i class='bx bx-category'></i>
             <span class="links-name">Categorieën</span>
-            </a>
+          </a>
         </li>
 
         <li>
-            <a href="#">
+          <a href="#">
             <i class='bx bx-plus-circle'></i>
             <span class="links-name">Toevoegen</span>
-            </a>
+          </a>
         </li>
 
         <div class="login">
           <li>
             <a href="#">
-            <i class='bx bx-log-out' ></i>
-            <span class="links-name">Uitloggen</span>
+              <i class='bx bx-log-out'></i>
+              <span class="links-name">Uitloggen</span>
             </a>
           </li>
         </div>
       </ul>
-      <?php } else { ?>
-        <div class="logo_content">
-          <div class="logo">
-            <img src="https://www.deboerlicht.nl/wp-content/uploads/2020/02/De-Boer-Licht-Logo-Wit-1024x771.png">
-          </div>
-          <i class='bx bx-menu' id="btn"></i>
+    <?php } else { ?>
+      <div class="logo_content">
+        <div class="logo">
+          <img src="https://www.deboerlicht.nl/wp-content/uploads/2020/02/De-Boer-Licht-Logo-Wit-1024x771.png">
         </div>
-        <ul class="nav_list">
-          
-          <li>
-            <a href="index.php">
-              <i class='bx bx-home' ></i>
-              <span class="links-name">Home</span>
-            </a>
-          </li>
+        <i class='bx bx-menu' id="btn"></i>
+      </div>
+      <ul class="nav_list">
 
-          <li>
-            <a href="ShoppingCart.php">
+        <li>
+          <a href="index.php">
+            <i class='bx bx-home'></i>
+            <span class="links-name">Home</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="ShoppingCart.php">
             <i class='bx bx-cart'></i>
             <span class="links-name">Home</span>
+          </a>
+        </li>
+
+        <li>
+          <?php include "sort.php" ?>
+        </li>
+
+
+
+        <div class="login">
+          <li>
+            <a href="#">
+              <i class='bx bx-log-in'></i>
             </a>
           </li>
-          
-          <div class="login">
-            <li >
-              <a href="#">
-                <i class='bx bx-log-in' ></i>
-              </a>
-            </li>
         </div>
       </ul>
-      <?php } ?>
-    </div>
+    <?php } ?>
+  </div>
   </div>
 </body>
 
 </html>
 
 <script>
-  let btn =  document.querySelector("#btn");
-  let sidebar =  document.querySelector(".sidebar");
-  let searchbtn =  document.querySelector(".bx-search");
-  
+  let btn = document.querySelector("#btn");
+  let sidebar = document.querySelector(".sidebar");
+  let searchbtn = document.querySelector(".bx-search");
+
   btn.onclick = function() {
     sidebar.classList.toggle("active");
   }
