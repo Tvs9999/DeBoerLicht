@@ -4,6 +4,8 @@ include 'connection.php';
 
 if(isset($_SESSION['shopping_cart'])){
     $total = 0;
+    $totaleKortingPrijs = 0;
+    $totaalZonderKorting = 0;
 }
 ?>
 <!DOCTYPE html>
@@ -159,17 +161,52 @@ if(isset($_SESSION['shopping_cart'])){
                             if($resultCheck > 0){
 
                                 while($product = mysqli_fetch_array($results)){ 
-                                    if($product['korting' > 0]){?>
-                                        
-                                    <?php }
+                                    $prijsNaKorting = $product['prijs'] - ($product['prijs'] * ($product['korting'] / 100));
+                                    $prijsMetKorting = $prijsNaKorting * $sessionId['quantity'];
+                                    if($product['korting' > 0]){
+                                        ?>
+                                        <div class="prijs-item">
+                                            <div class="">
 
-                                    
+                                                <p><?php echo $product['naam']?></p>
+                                            </div>
+                                            <div class="aligned-right">
+                                                <p><?php echo $sessionId['quantity']?>x</p>
+
+                                            </div>
+                                            <div class="aligned-right">
+
+                                                <p>€ <?php echo number_format($prijsMetKorting, 2, ",", ".")?></p>
+                                            </div>
+                                        </div>
+                                        <?php }
+
+
+                                    if($product['korting'] > 0){
+                                        $totaleKortingPrijs = $totaleKortingPrijs + ($prijsNaKorting * $sessionId['quantity']);
+                                    } 
+
+                                    else{
+                                        $totaalZonderKorting = $totaalZonderKorting + ($product['prijs'] * $sessionId['quantity']);
+                                    } 
                                 }
                             }
 
                         }
-                    }
-                    ?>
+                    } ?>
+                    <div class="streep">
+                        <div class="streep-links"></div>
+                        <div class="streep-rechts">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="totale-prijs">
+                        <?php $total = $totaalZonderKorting + $totaleKortingPrijs; ?>
+                        <div class="totaal-display">
+                            <p class="totaal-links">Totaal</p>
+                            <p class = "totaal-rechts">€ <?php echo number_format($total, 2, ",", ".");?></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
