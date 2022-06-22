@@ -10,8 +10,6 @@ $resultCheck = mysqli_num_rows($results);
 
 if(isset($_GET['action']) && isset($_GET['id'])){
     if($_GET['action'] == 'add'){
-        $id = $_GET['id'];
-        $getProduct = "SELECT * FROM producten WHERE id = $id";
         //Voeg toe
         if(filter_input(INPUT_POST, 'add_to_cart')){
             if(isset($_SESSION['shopping_cart'])){
@@ -22,16 +20,8 @@ if(isset($_GET['action']) && isset($_GET['id'])){
                 if(!in_array(filter_input(INPUT_GET, 'id'), $product_ids)){
                     $_SESSION['shopping_cart'][$count] = array
                     (
-                        'id' => filter_input(INPUT_GET, 'id'),
-                        'naam' => filter_input(INPUT_POST, 'naam'),
-                        'prijs' => filter_input(INPUT_POST, 'prijs'),
                         'quantity' => filter_input(INPUT_POST, 'quantity'),
-                        'Foto1' => filter_input(INPUT_POST, 'Foto1'),
-                        'type' => filter_input(INPUT_POST, 'type'),
-                        'voltage' => filter_input(INPUT_POST, 'voltage'),
-                        'categorie' => filter_input(INPUT_POST, 'categorie'),
-                        'voorraad' => filter_input(INPUT_POST, 'voorraad'),
-                        'korting' => filter_input(INPUT_POST, 'korting'),
+                        'id' => filter_input(INPUT_GET, 'id'),
                     );
                 }
                 else {
@@ -46,16 +36,8 @@ if(isset($_GET['action']) && isset($_GET['id'])){
             else{
                 $_SESSION['shopping_cart'][0] = array
                 (
-                    'id' => filter_input(INPUT_GET, 'id'),
-                    'naam' => filter_input(INPUT_POST, 'naam'),
-                    'prijs' => filter_input(INPUT_POST, 'prijs'),
                     'quantity' => filter_input(INPUT_POST, 'quantity'),
-                    'Foto1' => filter_input(INPUT_POST, 'Foto1'),
-                    'type' => filter_input(INPUT_POST, 'type'),
-                    'voltage' => filter_input(INPUT_POST, 'voltage'),
-                    'categorie' => filter_input(INPUT_POST, 'categorie'),
-                    'voorraad' => filter_input(INPUT_POST, 'voorraad'),
-                    'korting' => filter_input(INPUT_POST, 'korting'),
+                    'id' => filter_input(INPUT_GET, 'id'),
                 );
             }
         }
@@ -175,14 +157,6 @@ if(isset($_GET['action']) && isset($_GET['id'])){
                             ?>
                             <div class="voeg-toe">
                                 <input class="voeg-toe-button" type="submit" name="add_to_cart" value="Voeg toe"></input>
-                                <input type="hidden" name="prijs" value="<?php echo $row['prijs']; ?>">
-                                <input type="hidden" name="naam" value="<?php echo $row['naam']; ?>">
-                                <input type="hidden" name="Foto1" value="<?php echo $row['Foto1']; ?>">
-                                <input type="hidden" name="type" value="<?php echo $row['type']; ?>">
-                                <input type="hidden" name="voltage" value="<?php echo $row['voltage']; ?>">
-                                <input type="hidden" name="categorie" value="<?php echo $categorie['naam']; ?>">
-                                <input type="hidden" name="voorraad" value="<?php echo $row['voorraad']; ?>">
-                                <input type="hidden" name="korting" value="<?php echo $row['korting']; ?>">
                                 <input type="text" name="quantity" class="aantal-input" value="1">                                
                             </div>
                         </div>
