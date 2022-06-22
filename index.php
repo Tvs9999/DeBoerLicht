@@ -26,15 +26,13 @@ include("connection.php");
                                     <a href="product.php?categorie=<?php echo $result['naam'];?>">
                                         <div class="categorie">
                                             <div class="categorie-links">
-                                                <div class="categorie-top">
-                                                    
                                                     <h2 class="categorie-naam"><?php echo $result['naam']; ?></h2>   
-                                                </div>
-                                                <div class="categorie-bottom">
+                                                
+                                                
                                                     <?php
                                                         echo "<img src='UploadImg/".($result['foto'])."' class = 'categorie-foto'>";
                                                         ?>                            
-                                                </div>   
+                                                
                                                 
                                             </div>
                     
@@ -52,7 +50,7 @@ include("connection.php");
                                                 <div class="korting-product">
                                                 <h2 class="categorie-naam"><?php echo $productName['korting']; ?></h2>
                                                 <?php
-                                                        echo "<img src='UploadImg/".($productName['foto'])."' class = 'categorie-foto'>";
+                                                        echo "<img src='UploadImg/".($productName['Foto1'])."' class = 'catpro-foto'>";
                                                         ?> 
 
                                                 </div>
