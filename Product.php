@@ -3,7 +3,7 @@ session_start();
 $product_ids = array();
 include 'connection.php';  
 
-$sql = "SELECT * FROM beheerder";
+
 $sql = "SELECT * FROM producten";
 $results = mysqli_query($conn, $sql);
 $resultCheck = mysqli_num_rows($results);
