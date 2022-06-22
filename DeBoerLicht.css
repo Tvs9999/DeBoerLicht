@@ -609,7 +609,6 @@ text-align: center;
 
 .in-cart-right h2{
   font-family: "Raleway", sans-serif;
-  color: #11101d;
 }
 
 .in-cart-right p{
@@ -649,14 +648,58 @@ text-align: center;
 .right-price{
   display: grid;
   grid-template-rows: 2fr 1fr;
+  position: relative;
 }
 
 .price{
   display: flex;
   justify-content: center;
   margin-bottom: 5px;
-  font-size: 20px;
+  align-items: flex-end;
+  color: #11101d;
+  text-align: center;
 }
+
+
+.cart-ribbon{
+  position: absolute;
+  width: 80px;
+  height: 20px;
+  background: rgb(232, 0, 0);
+  top: 12px;
+  right: -12px;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.cart-ribbon p{
+  position: absolute;
+  top: -1.5px;
+}
+
+.cart-ribbon::before{
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 0;
+  border-left: 3px solid rgb(157, 0, 0);
+  border-right: 3px solid transparent;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid rgb(157, 0, 0);
+}
+.cart-ribbon::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 10px solid #fff;
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
 
 .hoeveelheid{
   display: flex;
@@ -692,8 +735,6 @@ text-align: center;
   color: white;
   font-size: 15px;
 }
-
-
 
 
 .divider:after,
