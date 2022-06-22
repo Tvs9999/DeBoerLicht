@@ -26,9 +26,9 @@ include 'connection.php';
       <input class="input" type="name" name="type" placeholder="Type"><br>
       <input class="input" type="name" name="voltage" placeholder="Voltage"><br>
       <input class="input" type="name" name="catId" placeholder="Categorie"><br>
-      <input class="input" type="name" name="beschikbaarheid" placeholder="Voorraad"><br>
-      <input class="bestand" type="file" name="file1" id="file1"><br>
-      <input class="bestand" type="file" name="file2" id="file2"><br>
+      <input class="input" type="name" name="voorraad" placeholder="Voorraad"><br>
+      <input class="bestand" type="file" name="Foto1" id="file1"><br>
+      <input class="bestand" type="file" name="Foto2" id="file2"><br>
       <input class="upload" type="submit" value="Toevoegen" name="submit">
     </form>
   </div>

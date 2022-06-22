@@ -9,25 +9,25 @@ $korting = $_POST['korting'];
 $type = $_POST['type'];
 $voltage = $_POST['voltage'];
 $catId = $_POST['catId'];
-$beschikbaarheid = $_POST['beschikbaarheid'];
-$target_file = $fileDestination . basename($_FILES["file1"]["name"]);
-$target_file2 = $fileDestination2 . basename($_FILES["file2"]["name"]);
+$voorraad = $_POST['voorraad'];
+$target_file = $fileDestination . basename($_FILES["Foto1"]["name"]);
+$target_file2 = $fileDestination2 . basename($_FILES["Foto2"]["name"]);
 
 
 
 if (isset($_POST['submit'])) {    
 
-    $fileName = $_FILES['file1']['name'];
-    $fileTmpName = $_FILES['file1']['tmp_name'];
-    $fileSize = $_FILES['file1']['size'];
-    $fileError = $_FILES['file1']['error'];
-    $fileType = $_FILES['file1']['type'];
+    $fileName = $_FILES['Foto1']['name'];
+    $fileTmpName = $_FILES['Foto1']['tmp_name'];
+    $fileSize = $_FILES['Foto1']['size'];
+    $fileError = $_FILES['Foto1']['error'];
+    $fileType = $_FILES['Foto1']['type'];
 
-    $fileName2 = $_FILES['file2']['name'];
-    $fileTmpName2 = $_FILES['file2']['tmp_name'];
-    $fileSize2 = $_FILES['file2']['size'];
-    $fileError2 = $_FILES['file2']['error'];
-    $fileType2 = $_FILES['file2']['type'];
+    $fileName2 = $_FILES['Foto2']['name'];
+    $fileTmpName2 = $_FILES['Foto2']['tmp_name'];
+    $fileSize2 = $_FILES['Foto2']['size'];
+    $fileError2 = $_FILES['Foto2']['error'];
+    $fileType2 = $_FILES['Foto2']['type'];
 
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
@@ -40,14 +40,12 @@ if (isset($_POST['submit'])) {
     if (in_array( $fileActualExt, $allowed) && in_array( $fileActualExt2, $allowed)) {
         if ($fileError === 0 && $fileError2 === 0){
             if ($fileSize < 1000000 && $fileSize2 < 1000000){
-                $fileNameNew = uniqid().$file1.".".$fileActualExt;
-                $fileDestination = 'upload/'.$fileNameNew;
+                $fileDestination = 'UploadImg/'.$fileName;
                 move_uploaded_file($fileTmpName, $fileDestination);
-                $fileNameNew2 = uniqid().$file2.".".$fileActualExt2;
-                $fileDestination2 = 'upload/'.$fileNameNew2;
+                $fileDestination2 = 'UploadImg/'.$$fileName2;
                 move_uploaded_file($fileTmpName2, $fileDestination2);
 
-                $insertsql = "INSERT INTO `producten`(`id`, `naam`, `prijs`, `korting`, `type`, `voltage`, `catId`, `beschikbaarheid`, `file1`, `file2`) VALUES ('$id','$naam','$prijs','$korting','$type','$voltage','$catId','$beschikbaarheid .','$target_file','$target_file2')";
+                $insertsql = "INSERT INTO `producten`(`id`, `naam`, `prijs`, `korting`, `type`, `voltage`, `catId`, `voorraad`, `Foto1`, `Foto2`) VALUES ('$id','$naam','$prijs','$korting','$type','$voltage','$catId','$voorraad .','$target_file','$target_file2')";
                 $insert = $conn->query($insertsql);
                 header("Location: toevoegenvb.php");
                 echo "<script>alert('Product heeft toegevoegd')</script>";
