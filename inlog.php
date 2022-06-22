@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
         if ($result->num_rows > 0) {
             $_SESSION['email'] = $email;
-            header("location:index.php");
+            header("location:product.php");
             exit();
           }
     else
