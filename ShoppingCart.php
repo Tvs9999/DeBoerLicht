@@ -7,6 +7,16 @@ if(isset($_SESSION['shopping_cart'])){
     $totaleKortingPrijs = 0;
     $totaalZonderKorting = 0;
 }
+
+if(filter_input(INPUT_GET, 'action') == 'delete'){
+    foreach($_SESSION['shopping_cart'] as $key => $product){
+        if($product['id'] == filter_input(INPUT_GET, 'id')){
+            unset($_SESSION['shopping_cart'][$key]);
+        }
+    }
+
+    $_SESSION['shoppinc_cart'] = array_values($_SESSION['shopping_cart']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +25,7 @@ if(isset($_SESSION['shopping_cart'])){
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/f1bb87abfd.js" crossorigin="anonymous"></script>
+        <script src="cart.js" async></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <link rel="stylesheet" href="DeBoerLicht.css">
         <title>ShoppingCart</title>
@@ -111,7 +122,6 @@ if(isset($_SESSION['shopping_cart'])){
                                                                         <p>-<?php echo $product['korting']; ?>%</p>
                                                                     </div>
                                                                     <s class="discount"><h2><?php echo "€ ".number_format($product['prijs'], 2, ",", "."); ?></h2></s>
-                                                                    <div class="filler"></div>
                                                                     <h2><?php echo "€ ".number_format($prijsNaKorting , 2, ",", "."); ?></h2>
                                                                 </div>
                                                             <?php }
@@ -123,7 +133,9 @@ if(isset($_SESSION['shopping_cart'])){
                                                     </div>
                                                     <div class="hoeveelheid">
                                                         <input type="text" name="quantity" class="cart-aantal" value="<?php echo $sessionId['quantity']?>">
-                                                        <button class="delete-btn"><i class='bx bx-trash-alt' ></i></button>
+                                                        <a href="ShoppingCart.php?action=delete&id=<?php echo $product['id'];?>">
+                                                            <button class="delete-btn"><i class='bx bx-trash-alt' ></i></button>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -192,21 +204,21 @@ if(isset($_SESSION['shopping_cart'])){
                                 }
                             }
 
-                        }
-                    } ?>
-                    <div class="streep">
-                        <div class="streep-links"></div>
-                        <div class="streep-rechts">
-                            <i class="fa fa-plus"></i>
+                        } ?>
+                        <div class="streep">
+                            <div class="streep-links"></div>
+                            <div class="streep-rechts">
+                                <i class="fa fa-plus"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="totale-prijs">
-                        <?php $total = $totaalZonderKorting + $totaleKortingPrijs; ?>
-                        <div class="totaal-display">
-                            <p class="totaal-links">Totaal</p>
-                            <p class = "totaal-rechts">€ <?php echo number_format($total, 2, ",", ".");?></p>
+                        <div class="totale-prijs">
+                            <?php $total = $totaalZonderKorting + $totaleKortingPrijs; ?>
+                            <div class="totaal-display">
+                                <p class="totaal-links">Totaal</p>
+                                <p class = "totaal-rechts">€ <?php echo number_format($total, 2, ",", ".");?></p>
+                            </div>
                         </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

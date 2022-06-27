@@ -1,7 +1,7 @@
-
-<?php include 'connection.php'; ?>
-
-
+<?php 
+session_start();
+include 'connection.php'; 
+?>
 
 <!DOCTYPE html>
 <html lang="nl">
@@ -73,18 +73,14 @@
 <?php
 include 'connection.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email=$_POST['email'];
-    $wachtwoord=$_POST['wachtwoord'];
-      
-       
-      
-  
+    $email = $_POST['email'];
+    $wachtwoord = $_POST['wachtwoord'];
         $sql = "SELECT * FROM `beheerder` WHERE `email` = '".$email."' AND `wachtwoord` = '".$wachtwoord."'";
         $result = $conn->query($sql);
   
         if ($result->num_rows > 0) {
             $_SESSION['email'] = $email;
-            header("location:product.php");
+            header("location:index.php");
             exit();
           }
     else
@@ -93,8 +89,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 }
-
-         
        $conn->close();      
 ?>
  

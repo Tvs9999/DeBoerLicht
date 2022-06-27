@@ -42,13 +42,13 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     }
 }
 
-pre_r($_SESSION);
+// pre_r($_SESSION);
 
-function pre_r($array){
-    echo '<pre>';
-    print_r($array);
-    echo '</pre>';
-}
+// function pre_r($array){
+//     echo '<pre>';
+//     print_r($array);
+//     echo '</pre>';
+// }
 
 
 ?>
@@ -150,7 +150,7 @@ function pre_r($array){
                                             <h2><?php echo "€ " . number_format($row['prijs'], 2, ",", "."); ?></h2>
                                         </s>
                                         <h2 class="product-prijs"><?php echo "€ " . number_format($prijsNaKorting, 2, ",", "."); ?></h2>
-                                    </div>
+                                    </div> 
                                 <?php } else { ?>
                                     <h2 class="product-prijs"><?php echo "€ " . number_format($row['prijs'], 2, ",", "."); ?></h2>
                                 <?php }
