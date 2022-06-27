@@ -104,7 +104,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                     WHERE id = $catId";
                     $catNaam = mysqli_query($conn, $query);
                     $categorie = mysqli_fetch_array($catNaam);
-            ?>
+                    ?>
                     <form method="post" action="Product.php?categorie=<?php echo $_GET['categorie'] ?>&action=add&id=<?php echo $row['id']; ?>">
                         <div class="product">
                             <div class="product-links">
@@ -157,22 +157,26 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                     </div> 
                                 <?php } else { ?>
                                     <h2 class="product-prijs"><?php echo "€ " . number_format($row['prijs'], 2, ",", "."); ?></h2>
-                                <?php
-                                 }
-                                 if (isset($_SESSION['email']) || isset($_SESSION['wachtwoord'])) {
-                                ?>
-                                <a href="bewerken.php"><i class="fa-solid fa-pen-to-square"></i></a>
-                                
-                                <?php }else{ ?>
+                                <?php } ?>
+
                                 <div class="voeg-toe">
+                                <?php if (isset($_SESSION['email']) || isset($_SESSION['wachtwoord'])) { ?>
+                                    <a href="bewerken.php">
+                                        <button class="voeg-toe-button">Wijzig</button>
+                                    </a>
+                                    <button class="delete-btn"><i class='bx bx-trash-alt' ></i></button>
+                                <?php } 
+                                else{ ?>
                                     <input class="voeg-toe-button" type="submit" name="add_to_cart" value="Voeg toe"></input>
                                     <input type="text" name="quantity" class="aantal-input" value="1">
-                                </div>
                                 <?php } ?>
+                                </div>
                             </div>
                         </div>
                     </form>
                     <?php } ?>
+
+        
                 <div class="sorteren">
                     <div class="dropup">
                         <div class="dropup-content">
@@ -187,7 +191,16 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                         </div>
                     </div>
                 </div>
-            <?php } else { ?>
+                <?php if (isset($_SESSION['email']) || isset($_SESSION['wachtwoord'])) { ?>
+                    <div class="add_product_btn">
+                        <a href="upload.php">
+                            <button class="add_product_btn">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </a>
+                    </div>
+                <?php }
+            } else { ?>
                 <div class=" geen-producten">
                     <h1>er zijn geen producten gevonden in deze categorie</h1>
                 </div>

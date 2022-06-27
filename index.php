@@ -25,19 +25,17 @@ include("connection.php");
                                     <a href="product.php?categorie=<?php echo $result['naam'];?>">
                                         <div class="categorie">
                                             <div class="categorie-links">
-                                                    <h2 class="categorie-naam"><?php echo $result['naam']; ?></h2>   
-                                                
-                                                
-                                                    <?php
-                                                        echo "<img src='UploadImg/".($result['foto'])."' class = 'categorie-foto'>";
-                                                        ?>                            
-                                                
-                                                
+                                                <?php
+                                                    echo "<img src='UploadImg/".($result['foto'])."' class = 'categorie-foto'>";
+                                                ?>
+                                                <div class="categorie-naam">
+
+                                                    <h2><?php echo $result['naam']; ?></h2>
+                                                </div>                               
                                             </div>
                     
                                            <?php $catId = $result['id'] ?>
                                             
-                
                                             <div class="categorie-rechts">
                                                <?php  $sql= "SELECT * FROM producten WHERE catId=$catId order by korting DESC LIMIT 4";
                                             
@@ -47,11 +45,14 @@ include("connection.php");
                                                if($totaleDing!=0){
                                                 while($productName=mysqli_fetch_assoc($Kevin)) { ?>
                                                 <div class="korting-product">
-                                                <h2 class="categorie-naam"><?php echo $productName['korting']; ?></h2>
-                                                <?php
+                                                    <?php
                                                         echo "<img src='UploadImg/".($productName['Foto1'])."' class = 'catpro-foto'>";
-                                                        ?> 
-
+                                                    ?> 
+                                                    <?php if($productName['korting'] > 0){?>
+                                                    <div class="cat-ribbon">
+                                                        <p>-<?php echo $productName['korting']; ?>%</p>
+                                                    </div>
+                                                    <?php } ?>
                                                 </div>
                                                     
                                                 

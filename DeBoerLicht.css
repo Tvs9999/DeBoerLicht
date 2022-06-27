@@ -331,6 +331,7 @@ pointer-events: none;
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr;
+  gap: 0 10px;
   align-items: center;
 }
 
@@ -345,6 +346,7 @@ pointer-events: none;
   font-size: 18px;
   padding: 2px 5px;
   height: 40px;
+  width: 100%;
 }
 
 .voeg-toe-button:hover{
@@ -429,18 +431,34 @@ pointer-events: none;
   height: 50px;
   width: 50px;
   margin-top: 10px;
+} 
+
+.add_product_btn{
+  position: fixed;
+  bottom: 20px;
+  right: 85px;
+  z-index: 1;
 }
 
-.dropbtn:hover{
+.add_product_btn button{
+  font-size: 25px;
+  border: none;
+  background-color: #11101d;
+  color: white;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.add_product_btn button:hover{
   background-color: rgb(68, 15, 175);
-  cursor: pointer;
   transition: .5s ease;
+  cursor: pointer;
 }
 
 .overzicht-container{
   grid-area: 1 / 2 / 1 / 2;
 }
-
 
 .besteloz-container {
   margin-top: 30px;
@@ -448,7 +466,6 @@ pointer-events: none;
   justify-content: center;
   grid-area: 1 / 2 / 1 / 2;
 }
-
 
 table {
   border-collapse: collapse;
@@ -461,25 +478,25 @@ table {
   text-align: center;
   }
   
-  .besteloz-tabel th {
-    background-color: #ddd;
-  }
-  
-  #goedkeuren-btn {
-    background-color: rgb(211, 211, 211);
-    color: green;
-    border-radius: 5px;
-    font-weight: bold ;
-    padding: 2px;
-  }
-  
-  #annuleren-btn {
-    background-color: rgb(211, 211, 211);
-    color: red;
-    border-radius: 5px;
-    font-weight: bold ;
-    padding: 2px;
-  }
+.besteloz-tabel th {
+  background-color: #ddd;
+}
+
+#goedkeuren-btn {
+  background-color: rgb(211, 211, 211);
+  color: green;
+  border-radius: 5px;
+  font-weight: bold ;
+  padding: 2px;
+}
+
+#annuleren-btn {
+  background-color: rgb(211, 211, 211);
+  color: red;
+  border-radius: 5px;
+  font-weight: bold ;
+  padding: 2px;
+}
   
 .categorie-container {
   display: grid;
@@ -497,7 +514,6 @@ table {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-
 .categorie-foto{
   height: 300px;
   width: 100%;
@@ -508,24 +524,69 @@ table {
 
 .categorie-links{
   grid-area: 1 / 1 / 2 / 2;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
+  position: relative;
+  text-align: center;
 }
-
 
 .categorie-rechts{
   grid-area: 1 / 2 / 2 / 3;
-  padding: 10px 20px;
+  gap: 5px;
+  padding: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 }
 
+.korting-product{
+  position: relative;
+}
+
+.cat-ribbon{
+  position: absolute;
+  width: 40px;
+  height: 15px;
+  background: rgb(232, 0, 0);
+  top: 6px;
+  right: -4px;
+  color: white;
+}
+
+.cat-ribbon p{
+  position: absolute;
+  top: -1.5px;
+  font-family: "Raleway", sans-serif;
+  font-size: 12px;
+  top: 0.3px;
+}
+
+.cat-ribbon::before{
+  content: "";
+  position: absolute;
+  top: -4px;
+  right: 0;
+  border-left: 2px solid rgb(157, 0, 0);
+  border-right: 2px solid transparent;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid rgb(157, 0, 0);
+}
+.cat-ribbon::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -15px;
+  border-left: 7.5px solid transparent;
+  border-right: 7.5px solid rgb(232, 0, 0);
+  border-top: 7.5px solid rgb(232, 0, 0);
+  border-bottom: 7.5px solid rgb(232, 0, 0);
+}
+
 .catpro-foto{
   text-decoration: none;
   object-fit: cover;
-  height: 80px;
+  object-position: center;
+  height: 100%;
   width: 100%;
+  position: relative;
 }
 
 .categorie-container a{
@@ -535,7 +596,18 @@ table {
 .categorie-naam{
   text-align: center;
   font-size: 20px;
-  padding-bottom: 5px;
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0,0,0,0.4);
+  color: white;
+  padding: 8px 0;
+  top: 0;
+  backdrop-filter: blur(1px);
+}
+
+.categorie-naam h2{
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
 }
 
 /* Toevoegen popup */
