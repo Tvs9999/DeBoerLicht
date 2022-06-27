@@ -232,6 +232,11 @@ if(filter_input(INPUT_GET, 'action') == 'delete'){
                                 <p class = "totaal-rechts">€ <?php echo number_format($total, 2, ",", ".");?></p>
                             </div>
                         </div>
+                        <div class="afreken_btn">
+                            <a href="betaalform.php">
+                                <button>Afrekenen</button>
+                            </a>
+                        </div>
                     <?php } ?>
                 </div>
             </div>

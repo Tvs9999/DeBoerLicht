@@ -12,7 +12,6 @@ include "Sidebar.php";
 
   <div class="betaal-form">
     <form action="bestel.php" method="POST">
-      <input type="hiddin" name="id"><br>
       <input type="text" name="Voornaam" class="bf" placeholder="Voornaam"><br>
       <input type="text" name="Achternaam" class="bf" placeholder="Achternaam"><br>
       <input type="text" name="email" class="bf" placeholder="Email adres"><br>

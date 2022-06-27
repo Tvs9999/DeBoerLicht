@@ -922,6 +922,28 @@ table {
   font-weight: 600;
 }
 
+.afreken_btn button{
+  width: 100%;
+  margin-top: 15px;
+  padding: 8px 0;
+  font-size: 20px;
+  border-radius: 12px;
+  color: #11101d;
+  background-color: white;
+  border: 2px solid white;
+  font-family: "Raleway", sans-serif;
+  font-weight: 900;
+}
+
+.afreken_btn button:hover{
+  background-color: rgb(68, 15, 175);
+  border-color: rgb(68, 15, 175);
+  color: white;
+  cursor: pointer;
+  transition: .5s ease;
+  font-weight: 500;
+}
+
 .divider:after,
 .divider:before {
 content: "";
