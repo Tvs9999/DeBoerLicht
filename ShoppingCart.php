@@ -15,7 +15,23 @@ if(filter_input(INPUT_GET, 'action') == 'delete'){
         }
     }
 
-    $_SESSION['shoppinc_cart'] = array_values($_SESSION['shopping_cart']);
+    $_SESSION['shopping_cart'] = array_values($_SESSION['shopping_cart']);
+}
+
+if(isset($_GET['action'])){
+    if($_GET['action'] == 'add'){
+        if(filter_input(INPUT_GET, 'afrekenen')){
+            if(isset($_SESSION['total'])){
+                header("Location: betaalform.php");
+            }
+            else{
+                $_SESSION['total'][0]=array(
+                    'total' => filter_input(INPUT_POST, 'total'),
+                );
+            }
+        }
+        header("Location: betaalform.php");
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -233,9 +249,10 @@ if(filter_input(INPUT_GET, 'action') == 'delete'){
                             </div>
                         </div>
                         <div class="afreken_btn">
-                            <a href="betaalform.php">
-                                <button>Afrekenen</button>
-                            </a>
+                            <form method="post" action="ShoppingCart.php?action=add">
+                                <input type="submit" name="afrekenen" value="Afrekenen">
+                                <input type="hidden" value="<?php $total ?>">
+                            </form>
                         </div>
                     <?php } ?>
                 </div>

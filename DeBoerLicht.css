@@ -922,7 +922,7 @@ table {
   font-weight: 600;
 }
 
-.afreken_btn button{
+.afreken_btn input{
   width: 100%;
   margin-top: 15px;
   padding: 8px 0;
@@ -935,7 +935,7 @@ table {
   font-weight: 900;
 }
 
-.afreken_btn button:hover{
+.afreken_btn input:hover{
   background-color: rgb(68, 15, 175);
   border-color: rgb(68, 15, 175);
   color: white;

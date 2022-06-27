@@ -9,9 +9,14 @@ $adres = $_POST['adres'];
 $Woonplaats = $_POST['Woonplaats'];
 $Postcode = $_POST['Postcode'];
 
+if(!empty($_SESSION['total'])){
+  foreach($_SESSION['total'] as $sessionTotal){
+    $total = $sessionTotal['total'];
+  }
+}
 
 if (isset($_POST['submit'])) {
-  $sql = "INSERT INTO `bestellingen` (`Voornaam`, `Achternaam`, `Datum`, `email`, `adres`, `Woonplaats`, `Postcode`) VALUES ('$Voornaam','$Achternaam','$Datum','$email','$adres','$Woonplaats','$Postcode')";
+  $sql = "INSERT INTO `bestellingen` (`Voornaam`, `Achternaam`, `Datum`, `email`, `adres`, `Woonplaats`, `Postcode`, 'totaalprijs') VALUES ('$Voornaam','$Achternaam','$Datum','$email','$adres','$Woonplaats','$Postcode', '$total')";
   $result = $conn->query($sql);
-  header("Location: Betaalpagina.php");
+  header("Location: index.php");
 }
