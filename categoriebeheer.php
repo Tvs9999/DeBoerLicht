@@ -14,17 +14,51 @@ include("sidebar.php");
 </head>
 <body>
   
-  <div class= "">
+<div class="container">
+    <div class="overzicht-container">
+      <div class="besteloz-tabel">
     <table>
       <tr>
         <th hidden>status</th>
         <th>foto</th>
         <th>naam</th>
-        <th colspan="2" align="center" >Opties</th>
-    
+        <th></th>
+
+        
         							
 
       </tr>
+      <?php
+          error_reporting(0);
+          $query = "SELECT * FROM categorie";
+          $data = mysqli_query($conn, $query);
+          $total = mysqli_num_rows($data);
+          if ($total != 0) {
+            while ($result = mysqli_fetch_assoc($data)) {
+
+              echo "
+              
+                <tr>
+                  <td>" . $result['foto'] . "</td>
+                  <td><img src='UploadImg/".($result['foto'])."' class = 'categorie1-foto'>""</td>
+                  
+                  
+                  
+                  <td>
+                  <input type='submit' value='aanmaken' id='goedkeuren-btn'>
+                  <input type='submit' value='wijzigen' id='goedkeuren-btn'>
+                  </td>                     
+                </tr>
+                ";
+            }
+          } else {
+            echo "
+              <tr>
+              <td colspan='9' align='center' style='font-size: 20px;'>Geen Bestellingen</td>
+              </tr>
+              ";
+          }
+          ?>
       
      </table>
   </div>
