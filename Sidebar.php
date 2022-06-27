@@ -45,7 +45,7 @@
         <li>
           <a href="#">
             <i class='bx bx-category'></i>
-            <span class="links-name">Categoriebeheer</span>
+            <span class="links-name">Categorieën</span>
           </a>
         </li>
 
