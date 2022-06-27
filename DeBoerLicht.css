@@ -158,12 +158,14 @@ pointer-events: none;
   left: 10px;
   width: 70%;
   opacity: 0;
+  pointer-events: none;
 }
 
 .sidebar.active .login{
   opacity: 1;
   pointer-events: auto;
   width: 90%;
+  pointer-events: all;
 }
 
 .logout{
