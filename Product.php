@@ -55,6 +55,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/f1bb87abfd.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b453093fd3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="DeBoerLicht.css">
 </head>
@@ -156,13 +157,18 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                     </div> 
                                 <?php } else { ?>
                                     <h2 class="product-prijs"><?php echo "€ " . number_format($row['prijs'], 2, ",", "."); ?></h2>
-                                <?php }
+                                <?php
+                                 }
+                                 if (isset($_SESSION['email']) || isset($_SESSION['wachtwoord'])) {
                                 ?>
-
+                                <a href="bewerken.php"><i class="fa-solid fa-pen-to-square"></i></a>
+                                
+                                <?php }else{ ?>
                                 <div class="voeg-toe">
                                     <input class="voeg-toe-button" type="submit" name="add_to_cart" value="Voeg toe"></input>
                                     <input type="text" name="quantity" class="aantal-input" value="1">
                                 </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </form>

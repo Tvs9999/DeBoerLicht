@@ -1,10 +1,9 @@
 .betaal-form {
-width: 50%;  
+display: flex;
 justify-content: center;
-margin-left: 350px;
 }
 
-.bp {
+.bf {
   border: 1px solid rgb(13, 13, 13);
   color: #051922;
   background-color: #d9d9d9;
@@ -16,7 +15,7 @@ margin-left: 350px;
   margin: 3px;
 }
 
-.bp:hover {
+.bf:hover {
   background-color: #c1c1c1;
   color: #ddd;
 }
