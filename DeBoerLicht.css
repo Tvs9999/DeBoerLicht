@@ -371,6 +371,12 @@ pointer-events: none;
   
 }
 
+.container {
+  margin-top: 30px;
+  justify-items: center;
+}
+
+
 table {
   border-collapse: collapse;
   display: flex;
