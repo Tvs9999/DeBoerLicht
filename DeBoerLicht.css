@@ -373,21 +373,43 @@ pointer-events: none;
   
 }
 
+.container {
+  margin-top: 30px;
+  justify-items: center;
+}
+
+
 table {
   border-collapse: collapse;
   display: flex;
 }
 
-.apparatuuroverzicht-tabel td,.apparatuuroverzicht-tabel th{
-padding:12px 15px;
-border:2px solid rgb(25, 157, 30);
-text-align: center;
-}
-
-.apparatuuroverzicht-tabel th {
-  background-color: #ddd;
-}
-
+.besteloz-tabel td,.besteloz-tabel th{
+  padding:12px 15px;
+  border:2px solid #11101d;
+  text-align: center;
+  }
+  
+  .besteloz-tabel th {
+    background-color: #ddd;
+  }
+  
+  #goedkeuren-btn {
+    background-color: rgb(211, 211, 211);
+    color: green;
+    border-radius: 5px;
+    font-weight: bold ;
+    padding: 2px;
+  }
+  
+  #annuleren-btn {
+    background-color: rgb(211, 211, 211);
+    color: red;
+    border-radius: 5px;
+    font-weight: bold ;
+    padding: 2px;
+  }
+  
 .categorie-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
