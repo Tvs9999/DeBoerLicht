@@ -363,6 +363,80 @@ pointer-events: none;
   border: solid 2px #11101d
 }
 
+.sorteren{
+  z-index: 1;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.dropup{
+  position: relative;
+  display: inline-block;
+}
+
+.dropup:hover .dropup-content{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  min-width: 180px;
+}
+
+.sort-optie{
+  background-color: #11101d;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-family: "Raleway", sans-serif;
+  color: white;
+}
+
+.top{
+  border-radius: 12px 12px 0 0;
+}
+
+.bottom{
+  border-radius: 0 0 12px 12px;
+}
+
+.sort-optie:hover{
+  background-color: rgb(68, 15, 175);
+  transition: .3s ease;
+}
+
+.hoogste-korting{
+  padding-bottom: 10px;
+  background-color: #11101d;
+}
+
+.dropup-content{
+  display: none;
+  position: absolute;
+  z-index: 1;
+  bottom: 50px;
+  right: 0px;
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.dropbtn{
+  font-size: 25px;
+  border: none;
+  background-color: #11101d;
+  color: white;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin-top: 10px;
+}
+
+.dropbtn:hover{
+  background-color: rgb(68, 15, 175);
+  cursor: pointer;
+  transition: .5s ease;
+}
+
 .overzicht-container{
   grid-area: 1 / 2 / 1 / 2;
 }
@@ -731,43 +805,13 @@ table {
   align-items: center;
 }
 
-.quantity{
+.cart-aantal{
   height: 40px;
   width: 50px;
   margin-right: 5px;
+  text-align: center;
   border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);;
-  display: grid;
-  grid-template-columns: 5fr 4fr;
-}
-
-.plus_min{
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-}
-
-.aantal-aanpassen{
-  color: white;
-  background-color: #11101d;
-  border: solid 2px #11101d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 10px;
-}
-
-.aantal-aanpassen:hover{
-  background-color:rgb(68, 15, 175);
-  transition: .5 ease;
-  cursor: pointer;
-}
-
-.plus{
-  border-radius: 0 12px 0 0;
-}
-
-.min{
-  border-radius: 0 0 12px 0;
+  border: solid 2px #11101d
 }
 
 .delete-btn{

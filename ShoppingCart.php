@@ -132,21 +132,7 @@ if(filter_input(INPUT_GET, 'action') == 'delete'){
                                                         ?>
                                                     </div>
                                                     <div class="hoeveelheid">
-                                                        <form action="">
-                                                            <div class="quantity">
-                                                                <div class="aantal">
-
-                                                                </div>
-                                                                <div class="plus_min">
-                                                                    <div class="aantal-aanpassen">
-                                                                        <i class="fas fa-plus"></i>
-                                                                    </div>
-                                                                    <div class="aantal-aanpassen">
-                                                                        <i class="fas fa-minus"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
+                                                        <input type="text" name="quantity" class="cart-aantal" value="<?php echo $sessionId['quantity']?>">
                                                         <a href="ShoppingCart.php?action=delete&id=<?php echo $product['id'];?>">
                                                             <button class="delete-btn"><i class='bx bx-trash-alt' ></i></button>
                                                         </a>

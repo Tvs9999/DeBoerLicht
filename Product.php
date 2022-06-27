@@ -42,14 +42,6 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     }
 }
 
-// pre_r($_SESSION);
-
-// function pre_r($array){
-//     echo '<pre>';
-//     print_r($array);
-//     echo '</pre>';
-// }
-
 
 ?>
 <!DOCTYPE html>
@@ -71,14 +63,6 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     <div class="container">
         <div class="product-container">
             <?php
-            $sort_option = "";
-            if (isset($_GET['sort_alphabet'])) {
-                if ($_GET['sort_alphabet'] == "a-z") {
-                    $sort_option = "ASC";
-                } elseif ($_GET['sort_alphabet'] == "z-a") {
-                    $sort_option = "DESC";
-                }
-            }
 
             $leCatNaam = $_GET['categorie'];
             $getCatId = "SELECT * FROM categorie WHERE naam = '$leCatNaam'";
@@ -87,9 +71,28 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
 
             $catId = $catRow['id'];
 
-            $sql = "SELECT * FROM producten 
-            WHERE catId = $catId 
-            ORDER BY naam $sort_option";
+            $sort_option = "";
+            if (isset($_GET['sort_alphabet'])) {
+                if ($_GET['sort_alphabet'] == "A-Z") {
+                    $sql = "SELECT * FROM producten WHERE catId = $catId ORDER BY naam ASC";
+                } 
+
+                else if ($_GET['sort_alphabet'] == "Z-A") {
+                    $sql = "SELECT * FROM producten WHERE catId = $catId ORDER BY naam DESC";
+                }
+
+                else if ($_GET['sort_alphabet'] == "HoogsteKorting") {
+                    $sql = "SELECT * FROM producten WHERE catId = $catId ORDER BY korting DESC";
+                }
+
+                else{
+                    $sql = "SELECT * FROM producten WHERE catId = $catId"; 
+                }
+            }
+            else{
+                $sql = "SELECT * FROM producten WHERE catId = $catId"; 
+            }
+
             $results = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($results);
 
@@ -163,8 +166,22 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                             </div>
                         </div>
                     </form>
-                <?php }
-            } else { ?>
+                    <?php } ?>
+                <div class="sorteren">
+                    <div class="dropup">
+                        <div class="dropup-content">
+                                <a class="top sort-optie" href="Product.php?categorie=<?php echo $_GET['categorie'] ?>&sort_alphabet=A-Z">A-Z</a>
+                                <a class="sort-optie" href="Product.php?categorie=<?php echo $_GET['categorie'] ?>&sort_alphabet=Z-A">Z-A</a>
+                                <a class="bottom sort-optie" href="Product.php?categorie=<?php echo $_GET['categorie'] ?>&sort_alphabet=HoogsteKorting">Hoogste korting</a>
+                        </div>
+                        <div class="dropup_btn">
+                            <button class="dropbtn">
+                                <i class="fas fa-sort"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            <?php } else { ?>
                 <div class=" geen-producten">
                     <h1>er zijn geen producten gevonden in deze categorie</h1>
                 </div>

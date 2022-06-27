@@ -87,10 +87,6 @@
             <span class="links-name">Winkelmandje</span>
           </a>
         </li>
-
-        <li> 
-          <?php include "sort.php" ?>
-        </li>
         
         <div class="login">
           <li>
