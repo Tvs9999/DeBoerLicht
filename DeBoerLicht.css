@@ -370,7 +370,9 @@ pointer-events: none;
 
 .besteloz-container {
   margin-top: 30px;
-  justify-items: center;
+  display: flex;
+  justify-content: center;
+  grid-area: 1 / 2 / 1 / 2;
 }
 
 
