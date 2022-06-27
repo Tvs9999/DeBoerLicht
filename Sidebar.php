@@ -50,7 +50,7 @@
         </li>
 
         <li>
-          <a href="#">
+          <a href="toevoegen.php">
             <i class='bx bx-plus-circle'></i>
             <span class="links-name">Toevoegen</span>
           </a>

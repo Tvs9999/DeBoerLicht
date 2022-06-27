@@ -1,4 +1,4 @@
-<?php 
+<?php
 include 'connection.php';
 ?>
 
@@ -9,36 +9,58 @@ include 'connection.php';
   <!-- Modal content -->
   <div class="bewerken-content">
     <?php
-      if(isset($_GET['id'])){
-        $id= $_GET['id'];
-        $sql= "SELECT * FROM producten WHERE 1";
-        $res = $conn->query($sql);
-        if ($res) {
-          foreach ($res as $result) {
-            echo"
-              <div class='container form-popup' id='bewerk'>
-                <div class='form'>
-                  <form action='update.php?id=$id' method='post' enctype='multipart/form-data'>
-                    <input type='text' name='naam' class='input' placeholder='".$result['naam']."'><br>
-                    <input class='input' type='name' name='price' placeholder='".$result['prijs']."'><br>
-                    <input class='input' type='name' name='korting' placeholder='".$result['korting']."'><br>
-                    <input class='input' type='name' name='type' placeholder='".$result['type']."'><br>
-                    <input class='input' type='name' name='voltage' placeholder='".$result['voltage']."'><br>
-                    <input class='input' type='name' name='catId' placeholder='".$result['catId']."'><br>
-                    <input class='input' type='name' name='voorraad' placeholder='".$result['voorraad']."'><br>
-                    <img src='".$result['file1']."' alt=''>
-                    <img src='".$result['file2']."' alt=''>
-                    <input class='bestand' type='file' name='file1' id='file1'><br>
-                    <input class='bestand' type='file' name='file2' id='file2'><br>
-                    <input class='upload cart-btn' type='submit' value='Bewerk' name='submit'>
-                    <a type='button' class='close' href='#'>&times;</a>
-                  </form>
-                </div>
-              </div>";
-          }
-       }
-  }  
-?>
-</div>
+    if (isset($_GET['id'])) {
+      $id = $_GET['id'];
+      $sql = "SELECT * FROM producten WHERE id='$id'";
+      $res = $conn->query($sql);
+      if ($res) {
+        foreach ($res as $result) { ?>
+
+          <body>
+            <form action="" method="GET">
+              <table border="0" bgcolor="black" align="center" cellspacing="20">
+                <tr>
+                  <td>Productnaam</td>
+                  <td><input type="text" value="<?php echo "$naam" ?>" name='naam' required></td>
+                </tr>
+                <tr>
+                  <td>Prijs</td>
+                  <td><input type="text" value="<?php echo "$price" ?>" name='prijs' required></td>
+                </tr>
+                <tr>
+                  <td>Korting</td>
+                  <td><input type="text" value="<?php echo "$korting" ?>" name='korting' required></td>
+                </tr>
+                <tr>
+                  <td>Type</td>
+                  <td><input type="text" value="<?php echo "$type" ?>" name='type' required></td>
+                </tr>
+                <tr>
+                  <td>Voltage</td>
+                  <td><input type="text" value="<?php echo "$voltage" ?>" name='voltage' required></td>
+                </tr>
+                <tr>
+                  <td>Categorie</td>
+                  <td><input type="text" value="<?php echo "$catId" ?>" name='catId' required></td>
+                </tr>
+                <tr>
+                  <td>Voorraad</td>
+                  <td><input type="text" value="<?php echo "$voorraad" ?>" name='voorraad' required></td>
+                  <td>Foto</td>
+                  <td><input type="text" value="<?php echo "$Foto1" ?>" name='Foto1' required></td>
+
+                </tr>
+                <tr>
+                  <td colspan="2" align="center"><input type="submit" id="button" name="submit" value="Gegevens opslaan"></a></td>
+                </tr>
+            </form>
+            </table>
+          </body>
+    <?php
+        }
+      }
+    }
+    ?>
+  </div>
 
 </div>

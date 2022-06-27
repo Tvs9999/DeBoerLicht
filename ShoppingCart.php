@@ -246,6 +246,7 @@ if(isset($_GET['action'])){
                             <div class="totaal-display">
                                 <p class="totaal-links">Totaal</p>
                                 <p class = "totaal-rechts">€ <?php echo number_format($total, 2, ",", ".");?></p>
+                                
                             </div>
                         </div>
                         <div class="afreken_btn">
