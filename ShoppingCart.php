@@ -230,7 +230,7 @@ if(filter_input(INPUT_GET, 'action') == 'delete'){
 
     function subTotal()
     {
-        
+
     }
 </script>
 </body>
