@@ -150,7 +150,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                             <h2><?php echo "€ " . number_format($row['prijs'], 2, ",", "."); ?></h2>
                                         </s>
                                         <h2 class="product-prijs"><?php echo "€ " . number_format($prijsNaKorting, 2, ",", "."); ?></h2>
-                                    </div>
+                                    </div> 
                                 <?php } else { ?>
                                     <h2 class="product-prijs"><?php echo "€ " . number_format($row['prijs'], 2, ",", "."); ?></h2>
                                 <?php }

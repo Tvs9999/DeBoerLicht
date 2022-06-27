@@ -19,7 +19,7 @@
 
 <body>
   <div class="sidebar">
-    <?php if (isset($_SESSION['admin_name']) || isset($_SESSION['user_name'])) { ?>
+    <?php if (isset($_SESSION['email']) || isset($_SESSION['wachtwoord'])) { ?>
       <div class="logo_content">
         <div class="logo">
           <img src="https://www.deboerlicht.nl/wp-content/uploads/2020/02/De-Boer-Licht-Logo-Wit-1024x771.png">
@@ -29,16 +29,16 @@
       <ul class="nav_list">
 
         <li>
-          <a href="#">
+          <a href="index.php">
             <i class='bx bx-home'></i>
-            <span class="links-name">Producten</span>
+            <span class="links-name">Home</span>
           </a>
         </li>
 
         <li>
-          <a href="#">
+          <a href="besteloverzicht.php">
             <i class='bx bx-list-check'></i>
-            <span class="links-name">Orders</span>
+            <span class="links-name">Bestellingen</span>
           </a>
         </li>
 
@@ -56,9 +56,9 @@
           </a>
         </li>
 
-        <div class="login">
+        <div class="logout">
           <li>
-            <a href="#">
+            <a href="logout.php">
               <i class='bx bx-log-out'></i>
               <span class="links-name">Uitloggen</span>
             </a>
@@ -84,20 +84,19 @@
         <li>
           <a href="ShoppingCart.php">
             <i class='bx bx-cart'></i>
-            <span class="links-name">Home</span>
+            <span class="links-name">Winkelmandje</span>
           </a>
         </li>
 
-        <li>
+        <li> 
           <?php include "sort.php" ?>
         </li>
-
-
-
+        
         <div class="login">
           <li>
-            <a href="#">
-              <i class='bx bx-log-in'></i>
+            <a href="inlog.php">
+              <i class="far fa-user"></i>
+              <span class="links-name">Beheerder</span>
             </a>
           </li>
         </div>
@@ -112,12 +111,10 @@
 <script>
   let btn = document.querySelector("#btn");
   let sidebar = document.querySelector(".sidebar");
+  let login = document.querySelector(".login");
   let searchbtn = document.querySelector(".bx-search");
 
   btn.onclick = function() {
-    sidebar.classList.toggle("active");
-  }
-  searchbtn.onclick = function() {
     sidebar.classList.toggle("active");
   }
 </script>

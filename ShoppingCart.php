@@ -4,6 +4,18 @@ include 'connection.php';
 
 if(isset($_SESSION['shopping_cart'])){
     $total = 0;
+    $totaleKortingPrijs = 0;
+    $totaalZonderKorting = 0;
+}
+
+if(filter_input(INPUT_GET, 'action') == 'delete'){
+    foreach($_SESSION['shopping_cart'] as $key => $product){
+        if($product['id'] == filter_input(INPUT_GET, 'id')){
+            unset($_SESSION['shopping_cart'][$key]);
+        }
+    }
+
+    $_SESSION['shoppinc_cart'] = array_values($_SESSION['shopping_cart']);
 }
 ?>
 <!DOCTYPE html>
@@ -13,6 +25,7 @@ if(isset($_SESSION['shopping_cart'])){
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/f1bb87abfd.js" crossorigin="anonymous"></script>
+        <script src="cart.js" async></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <link rel="stylesheet" href="DeBoerLicht.css">
         <title>ShoppingCart</title>
@@ -27,9 +40,6 @@ if(isset($_SESSION['shopping_cart'])){
                     <div class="cart-product">
                         <?php 
                         if(!empty($_SESSION['shopping_cart'])){
-                            
-                                
-                            
                             foreach($_SESSION['shopping_cart'] as $sessionId){
                                 $id = $sessionId['id'];
                                 $sql = "SELECT * FROM producten WHERE id = $id";
@@ -112,7 +122,6 @@ if(isset($_SESSION['shopping_cart'])){
                                                                         <p>-<?php echo $product['korting']; ?>%</p>
                                                                     </div>
                                                                     <s class="discount"><h2><?php echo "€ ".number_format($product['prijs'], 2, ",", "."); ?></h2></s>
-                                                                    <div class="filler"></div>
                                                                     <h2><?php echo "€ ".number_format($prijsNaKorting , 2, ",", "."); ?></h2>
                                                                 </div>
                                                             <?php }
@@ -124,7 +133,9 @@ if(isset($_SESSION['shopping_cart'])){
                                                     </div>
                                                     <div class="hoeveelheid">
                                                         <input type="text" name="quantity" class="cart-aantal" value="<?php echo $sessionId['quantity']?>">
-                                                        <button class="delete-btn"><i class='bx bx-trash-alt' ></i></button>
+                                                        <a href="ShoppingCart.php?action=delete&id=<?php echo $product['id'];?>">
+                                                            <button class="delete-btn"><i class='bx bx-trash-alt' ></i></button>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -149,7 +160,66 @@ if(isset($_SESSION['shopping_cart'])){
                 <div class="totaalprijs">
                     <h1>Totaalprijs</h1>
                 </div>
-                
+                <div class="prijzen">
+
+                    <?php
+                    if(!empty($_SESSION['shopping_cart'])){
+                        foreach($_SESSION['shopping_cart'] as $sessionId){
+                            $id = $sessionId['id'];
+                            $sql = "SELECT * FROM producten WHERE id = $id";
+                            $results = mysqli_query($conn, $sql);
+                            $resultCheck = mysqli_num_rows($results);
+                            
+                            if($resultCheck > 0){
+
+                                while($product = mysqli_fetch_array($results)){ 
+                                    $prijsNaKorting = $product['prijs'] - ($product['prijs'] * ($product['korting'] / 100));
+                                    $prijsMetKorting = $prijsNaKorting * $sessionId['quantity'];
+                                    if($product['korting' > 0]){
+                                        ?>
+                                        <div class="prijs-item">
+                                            <div class="">
+
+                                                <p><?php echo $product['naam']?></p>
+                                            </div>
+                                            <div class="aligned-right">
+                                                <p><?php echo $sessionId['quantity']?>x</p>
+
+                                            </div>
+                                            <div class="aligned-right">
+
+                                                <p>€ <?php echo number_format($prijsMetKorting, 2, ",", ".")?></p>
+                                            </div>
+                                        </div>
+                                        <?php }
+
+
+                                    if($product['korting'] > 0){
+                                        $totaleKortingPrijs = $totaleKortingPrijs + ($prijsNaKorting * $sessionId['quantity']);
+                                    } 
+
+                                    else{
+                                        $totaalZonderKorting = $totaalZonderKorting + ($product['prijs'] * $sessionId['quantity']);
+                                    } 
+                                }
+                            }
+
+                        } ?>
+                        <div class="streep">
+                            <div class="streep-links"></div>
+                            <div class="streep-rechts">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                        </div>
+                        <div class="totale-prijs">
+                            <?php $total = $totaalZonderKorting + $totaleKortingPrijs; ?>
+                            <div class="totaal-display">
+                                <p class="totaal-links">Totaal</p>
+                                <p class = "totaal-rechts">€ <?php echo number_format($total, 2, ",", ".");?></p>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>
         </div>
         <div class="sidebar-left">

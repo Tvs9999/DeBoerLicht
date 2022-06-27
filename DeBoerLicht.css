@@ -23,8 +23,6 @@
 .topnav {
 overflow: hidden;
 margin: 0;
-
-
 }
 
 .sidebar.active {
@@ -81,8 +79,6 @@ pointer-events: none;
 .sidebar.active #btn{
   left: 90%;
 }
-
-
 
 .nav_list{
   margin-top: 10px;
@@ -161,12 +157,20 @@ pointer-events: none;
   bottom: 10px;
   left: 10px;
   width: 70%;
+  opacity: 0;
 }
 
 .sidebar.active .login{
   opacity: 1;
   pointer-events: auto;
   width: 90%;
+}
+
+.logout{
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 70%;
 }
 
 .container{
@@ -209,8 +213,6 @@ pointer-events: none;
   display: flex;
 }
 
-
-
 .product-rechts{
   grid-area: 1 / 2 / 1 / 2;
   padding: 10px 20px;
@@ -231,7 +233,7 @@ pointer-events: none;
   width: 80px;
   height: 20px;
   background: rgb(232, 0, 0);
-  top: 65px;
+  top: 60px;
   right: -6px;
   text-align: center;
   color: white;
@@ -359,6 +361,10 @@ pointer-events: none;
   border: solid 2px #11101d
 }
 
+.overzicht-container{
+  grid-area: 1 / 2 / 1 / 2;
+}
+
 .apparatuuroverzicht-tabel{
   display: flex;
   justify-content: center;
@@ -370,16 +376,32 @@ table {
   display: flex;
 }
 
-.apparatuuroverzicht-tabel td,.apparatuuroverzicht-tabel th{
-padding:12px 15px;
-border:2px solid rgb(25, 157, 30);
-text-align: center;
-}
-
-.apparatuuroverzicht-tabel th {
-  background-color: #ddd;
-}
-
+.besteloz-tabel td,.besteloz-tabel th{
+  padding:12px 15px;
+  border:2px solid #11101d;
+  text-align: center;
+  }
+  
+  .besteloz-tabel th {
+    background-color: #ddd;
+  }
+  
+  #goedkeuren-btn {
+    background-color: rgb(211, 211, 211);
+    color: green;
+    border-radius: 5px;
+    font-weight: bold ;
+    padding: 2px;
+  }
+  
+  #annuleren-btn {
+    background-color: rgb(211, 211, 211);
+    color: red;
+    border-radius: 5px;
+    font-weight: bold ;
+    padding: 2px;
+  }
+  
 .categorie-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -533,6 +555,10 @@ text-align: center;
   grid-area: 1 / 2 / 1 / 2;
   display: grid;
   grid-template-rows: 60px auto;
+  position: sticky;
+  height: 100vh;
+  box-sizing: border-box;
+  top: 0;
 }
 
 .uw-winkelmandje{
@@ -713,6 +739,7 @@ text-align: center;
 
 .delete-btn{
   border: none;
+  text-decoration: none;
   background-color: #11101d;
   cursor: pointer;
   margin-left: 5px;
@@ -731,6 +758,61 @@ text-align: center;
   font-size: 15px;
 }
 
+.prijzen{
+  padding: 20px 30px;
+}
+
+.prijzen p{
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+}
+
+.prijs-item{
+  color: white;
+  display: grid;
+  grid-template-columns: 3fr auto 2fr;
+}
+
+.aligned-right{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.streep{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 7px 0;
+}
+
+.streep-links{
+  background-color: white;
+  height: 4px;
+  border-radius: 1.5px;
+  margin-right: 5px;
+}
+
+.streep-rechts{
+  color: white;
+  padding-left: 5px;
+  font-size: 20px;
+}
+
+.totaal-display{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.totaal-links{
+  color: white;
+  font-weight: 600;
+}
+
+.totaal-rechts{
+  color: white;
+  text-align: right;
+  font-weight: 600;
+}
 
 .divider:after,
 .divider:before {
