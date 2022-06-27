@@ -122,7 +122,7 @@ if(filter_input(INPUT_GET, 'action') == 'delete'){
                                                                         <p>-<?php echo $product['korting']; ?>%</p>
                                                                     </div>
                                                                     <s class="discount"><h2><?php echo "€ ".number_format($product['prijs'], 2, ",", "."); ?></h2></s>
-                                                                    <h2><?php echo "€ ".number_format($prijsNaKorting , 2, ",", "."). "<input type='hidden' class = 'iprice' value'".$prijsNaKorting."'";?></h2>
+                                                                    <h2><?php echo "€ ".number_format($prijsNaKorting , 2, ",", "."); ?></h2>
                                                                 </div>
                                                             <?php }
 
@@ -132,7 +132,21 @@ if(filter_input(INPUT_GET, 'action') == 'delete'){
                                                         ?>
                                                     </div>
                                                     <div class="hoeveelheid">
-                                                        <input type="text" name="quantity" class="cart-aantal iquantity" value="<?php echo $sessionId['quantity']?>">
+                                                        <form action="">
+                                                            <div class="quantity">
+                                                                <div class="aantal">
+
+                                                                </div>
+                                                                <div class="plus_min">
+                                                                    <div class="aantal-aanpassen">
+                                                                        <i class="fas fa-plus"></i>
+                                                                    </div>
+                                                                    <div class="aantal-aanpassen">
+                                                                        <i class="fas fa-minus"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
                                                         <a href="ShoppingCart.php?action=delete&id=<?php echo $product['id'];?>">
                                                             <button class="delete-btn"><i class='bx bx-trash-alt' ></i></button>
                                                         </a>
@@ -161,6 +175,7 @@ if(filter_input(INPUT_GET, 'action') == 'delete'){
                     <h1>Totaalprijs</h1>
                 </div>
                 <div class="prijzen">
+
                     <?php
                     if(!empty($_SESSION['shopping_cart'])){
                         foreach($_SESSION['shopping_cart'] as $sessionId){
@@ -174,7 +189,7 @@ if(filter_input(INPUT_GET, 'action') == 'delete'){
                                 while($product = mysqli_fetch_array($results)){ 
                                     $prijsNaKorting = $product['prijs'] - ($product['prijs'] * ($product['korting'] / 100));
                                     $prijsMetKorting = $prijsNaKorting * $sessionId['quantity'];
-                                    if($product['korting' > 0]){
+                                    if($product['korting'] > 0){
                                         ?>
                                         <div class="prijs-item">
                                             <div class="">
@@ -186,17 +201,32 @@ if(filter_input(INPUT_GET, 'action') == 'delete'){
                                             </div>
                                             <div class="aligned-right">
 
-                                                <p>€ <?php echo number_format($prijsMetKorting, 2, ",", ".")?></p>
+                                                <p>
+                                                    € <?php echo number_format($prijsMetKorting, 2, ",", ".")?>
+                                                </p>
                                             </div>
                                         </div>
-                                        <?php }
+                                        <?php 
+                                        $totaleKortingPrijs = $totaleKortingPrijs + ($prijsNaKorting * $sessionId['quantity']);                
+                                    }
 
 
-                                    if($product['korting'] > 0){
-                                        $totaleKortingPrijs = $totaleKortingPrijs + ($prijsNaKorting * $sessionId['quantity']);
-                                    } 
+                                    else{ ?>
+                                        <div class="prijs-item">
+                                            <div class="">
+                                                <p><?php echo $product['naam']?></p>
+                                            </div>
+                                            <div class="aligned-right">
+                                                <p><?php echo $sessionId['quantity']?>x</p>
 
-                                    else{
+                                            </div>
+                                            <div class="aligned-right">
+                                                <p>
+                                                    € <?php echo number_format($product['prijs'] * $sessionId['quantity'], 2, ",", ".")?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <?php
                                         $totaalZonderKorting = $totaalZonderKorting + ($product['prijs'] * $sessionId['quantity']);
                                     } 
                                 }
@@ -224,14 +254,5 @@ if(filter_input(INPUT_GET, 'action') == 'delete'){
             <?php include 'Sidebar.php' ?>
         </div>
     </div>
-<script>
-    var iprice=document.getElementByClassName('iprice');
-    var iquantity=document.getElementByClassName('iquantity');
-
-    function subTotal()
-    {
-
-    }
-</script>
 </body>
 </html>
