@@ -16,7 +16,7 @@ session_start();
 
 <body>
 
-  <div class="container">
+  <div class="besteloz-container">
     <div class="overzicht-container">
       <div class="besteloz-tabel">
         <table>

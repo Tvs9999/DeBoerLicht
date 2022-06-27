@@ -365,13 +365,8 @@ pointer-events: none;
   grid-area: 1 / 2 / 1 / 2;
 }
 
-.apparatuuroverzicht-tabel{
-  display: flex;
-  justify-content: center;
-  
-}
 
-.container {
+.besteloz-container {
   margin-top: 30px;
   justify-items: center;
 }
