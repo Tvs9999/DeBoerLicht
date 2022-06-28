@@ -10,7 +10,7 @@ include 'connection.php';
 <div class="toevoegen">
 
   <div class="toevoegen-content">
-    <form action="upload.php" method="post">
+    <form action="upload.php" method="post" enctype="multipart/form-data">
       <input type="hidden" name="id"><br>
       <input type="text" name="productnaam" class="input" placeholder="Product Naam"><br>
       <input class="input" type="name" name="price" placeholder="Prijs"><br>
