@@ -888,7 +888,7 @@ table {
   font-weight: 600;
 }
 
-.afreken_btn input{
+.afreken_btn button{
   width: 100%;
   margin-top: 15px;
   padding: 8px 0;
@@ -899,9 +899,10 @@ table {
   border: 2px solid white;
   font-family: "Raleway", sans-serif;
   font-weight: 900;
+  text-decoration: none;
 }
 
-.afreken_btn input:hover{
+.afreken_btn button:hover{
   background-color: rgb(68, 15, 175);
   border-color: rgb(68, 15, 175);
   color: white;
@@ -975,6 +976,78 @@ margin-top: 250px;
 }
 
 .toevoegen-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.betaal-container{
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+.betaal-container.show{
+  pointer-events  : auto;
+  opacity: 1;
+}
+
+.betaal-modal{
+  background-color: white;
+  width: 800px;
+}
+
+.betaal-form {
+  display: flex;
+  justify-content: center; 
+  width: 100%;
+  position: relative;
+  padding: 20px;
+}
+
+.close_btn{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.bf {
+  border: 1px solid rgb(13, 13, 13);
+  color: #051922;
+  background-color: #d9d9d9;
+  padding: 15px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 15px;
+  text-align: center;
+  margin: 3px;
+}
+
+.bf:hover {
+  background-color: #c1c1c1;
+  color: #ddd;
+}
+
+.bestel-btn {
+  font-family: 'Poppins', sans-serif;
+  display: inline-block;
+  background-color: #F28123;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-left: 44.8% ;
+  margin-right: 44.8%;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.bestel-btn:hover {
   background-color: #ffffff;
   color: #000000;
 }

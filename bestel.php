@@ -1,5 +1,6 @@
 <?php
 include "connection.php";
+session_start();
 
 $Voornaam = $_POST['Voornaam'];
 $Achternaam = $_POST['Achternaam'];
@@ -9,14 +10,23 @@ $adres = $_POST['adres'];
 $Woonplaats = $_POST['Woonplaats'];
 $Postcode = $_POST['Postcode'];
 
-if(!empty($_SESSION['total'])){
-  foreach($_SESSION['total'] as $sessionTotal){
-    $total = $sessionTotal['total'];
-  }
-}
-
 if (isset($_POST['submit'])) {
-  $sql = "INSERT INTO `bestellingen` (`Voornaam`, `Achternaam`, `Datum`, `email`, `adres`, `Woonplaats`, `Postcode`, 'totaalprijs') VALUES ('$Voornaam','$Achternaam','$Datum','$email','$adres','$Woonplaats','$Postcode', '$total')";
-  $result = $conn->query($sql);
-  header("Location: index.php");
+  $bestelling = "INSERT INTO bestellingen (Voornaam, Achternaam, Datum, email, adres, Woonplaats, Postcode) VALUES ('$Voornaam','$Achternaam','$Datum','$email','$adres','$Woonplaats','$Postcode')";
+  mysqli_query($conn, $bestelling);
+
+  $bestellingId = mysqli_insert_id($conn);
+  if($_SESSION['shopping_cart']){
+    foreach($_SESSION['shopping_cart'] as $product){
+      
+      // per product id
+      // insert op de koppel tabel met hierin:
+      // - het prod.id 
+      // - bestelling id
+      // - aantal bestelde produten
+      $sql = "INSERT INTO bestellingproducten (bestelId, prodId, quantity) VALUES (".$bestellingId.", ".$product['id'].", ".$product['quantity'].")"; 
+      mysqli_query($conn, $sql);
+    }
+  }
+
+//   header("Location: index.php");
 }
