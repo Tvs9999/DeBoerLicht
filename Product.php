@@ -164,7 +164,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                     <a href="bewerken.php">
                                         <button class="voeg-toe-button">Wijzig</button>
                                     </a>
-                                    <button class="delete-btn"><i class='bx bx-trash-alt' ></i></button>
+                                    <button class="delete-btn"><i class='bx bx-trash-alt'></i></button>
                                 <?php } 
                                 else{ ?>
                                     <input class="voeg-toe-button" type="submit" name="add_to_cart" value="Voeg toe"></input>
@@ -191,15 +191,8 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                         </div>
                     </div>
                 </div>
-                <?php if (isset($_SESSION['email']) || isset($_SESSION['wachtwoord'])) { ?>
-                    <div class="add_product_btn">
-                        <a href="upload.php">
-                            <button class="add_product_btn">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </a>
-                    </div>
-                <?php }
+
+                <?php 
             } else { ?>
                 <div class=" geen-producten">
                     <h1>er zijn geen producten gevonden in deze categorie</h1>
