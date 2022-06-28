@@ -22,7 +22,7 @@ include("sidebar.php");
         <th hidden>status</th>
         <th>foto</th>
         <th>naam</th>
-        <th></th>
+        <th colspan="2" align="center">Opties</th>
 
         
         							
@@ -39,8 +39,9 @@ include("sidebar.php");
               echo "
               
                 <tr>
+                <td><img src='UploadImg/".($result['foto'])."' class = 'categorie1-foto'></td>
                   <td>" . $result['foto'] . "</td>
-                  <td><img src='UploadImg/".($result['foto'])."' class = 'categorie1-foto'>""</td>
+                  
                   
                   
                   
