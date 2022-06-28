@@ -21,7 +21,7 @@ include("sidebar.php");
         <th hidden>status</th>
         <th>foto</th>
         <th>naam</th>
-        <th></th>
+        <th colspan="2" align="center">Opties</th>
 
         
         							

@@ -42,14 +42,6 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     }
 }
 
-// pre_r($_SESSION);
-
-// function pre_r($array){
-//     echo '<pre>';
-//     print_r($array);
-//     echo '</pre>';
-// }
-
 
 ?>
 <!DOCTYPE html>
@@ -63,6 +55,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/f1bb87abfd.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b453093fd3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="DeBoerLicht.css">
 </head>
@@ -71,14 +64,6 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     <div class="container">
         <div class="product-container">
             <?php
-            $sort_option = "";
-            if (isset($_GET['sort_alphabet'])) {
-                if ($_GET['sort_alphabet'] == "a-z") {
-                    $sort_option = "ASC";
-                } elseif ($_GET['sort_alphabet'] == "z-a") {
-                    $sort_option = "DESC";
-                }
-            }
 
             $leCatNaam = $_GET['categorie'];
             $getCatId = "SELECT * FROM categorie WHERE naam = '$leCatNaam'";
@@ -87,9 +72,28 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
 
             $catId = $catRow['id'];
 
-            $sql = "SELECT * FROM producten 
-            WHERE catId = $catId 
-            ORDER BY naam $sort_option";
+            $sort_option = "";
+            if (isset($_GET['sort_alphabet'])) {
+                if ($_GET['sort_alphabet'] == "A-Z") {
+                    $sql = "SELECT * FROM producten WHERE catId = $catId ORDER BY naam ASC";
+                } 
+
+                else if ($_GET['sort_alphabet'] == "Z-A") {
+                    $sql = "SELECT * FROM producten WHERE catId = $catId ORDER BY naam DESC";
+                }
+
+                else if ($_GET['sort_alphabet'] == "HoogsteKorting") {
+                    $sql = "SELECT * FROM producten WHERE catId = $catId ORDER BY korting DESC";
+                }
+
+                else{
+                    $sql = "SELECT * FROM producten WHERE catId = $catId"; 
+                }
+            }
+            else{
+                $sql = "SELECT * FROM producten WHERE catId = $catId"; 
+            }
+
             $results = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($results);
 
@@ -100,7 +104,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                     WHERE id = $catId";
                     $catNaam = mysqli_query($conn, $query);
                     $categorie = mysqli_fetch_array($catNaam);
-            ?>
+                    ?>
                     <form method="post" action="Product.php?categorie=<?php echo $_GET['categorie'] ?>&action=add&id=<?php echo $row['id']; ?>">
                         <div class="product">
                             <div class="product-links">
@@ -153,17 +157,42 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                     </div> 
                                 <?php } else { ?>
                                     <h2 class="product-prijs"><?php echo "€ " . number_format($row['prijs'], 2, ",", "."); ?></h2>
-                                <?php }
-                                ?>
+                                <?php } ?>
 
                                 <div class="voeg-toe">
+                                <?php if (isset($_SESSION['email']) || isset($_SESSION['wachtwoord'])) { ?>
+                                    <a href="bewerken.php">
+                                        <button class="voeg-toe-button">Wijzig</button>
+                                    </a>
+                                    <button class="delete-btn"><i class='bx bx-trash-alt'></i></button>
+                                <?php } 
+                                else{ ?>
                                     <input class="voeg-toe-button" type="submit" name="add_to_cart" value="Voeg toe"></input>
                                     <input type="text" name="quantity" class="aantal-input" value="1">
+                                <?php } ?>
                                 </div>
                             </div>
                         </div>
                     </form>
-                <?php }
+                    <?php } ?>
+
+        
+                <div class="sorteren">
+                    <div class="dropup">
+                        <div class="dropup-content">
+                                <a class="top sort-optie" href="Product.php?categorie=<?php echo $_GET['categorie'] ?>&sort_alphabet=A-Z">A-Z</a>
+                                <a class="sort-optie" href="Product.php?categorie=<?php echo $_GET['categorie'] ?>&sort_alphabet=Z-A">Z-A</a>
+                                <a class="bottom sort-optie" href="Product.php?categorie=<?php echo $_GET['categorie'] ?>&sort_alphabet=HoogsteKorting">Hoogste korting</a>
+                        </div>
+                        <div class="dropup_btn">
+                            <button class="dropbtn">
+                                <i class="fas fa-sort"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <?php 
             } else { ?>
                 <div class=" geen-producten">
                     <h1>er zijn geen producten gevonden in deze categorie</h1>

@@ -331,6 +331,7 @@ pointer-events: none;
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr;
+  gap: 0 10px;
   align-items: center;
 }
 
@@ -345,6 +346,7 @@ pointer-events: none;
   font-size: 18px;
   padding: 2px 5px;
   height: 40px;
+  width: 100%;
 }
 
 .voeg-toe-button:hover{
@@ -363,16 +365,107 @@ pointer-events: none;
   border: solid 2px #11101d
 }
 
+.sorteren{
+  z-index: 1;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.dropup{
+  position: relative;
+  display: inline-block;
+}
+
+.dropup:hover .dropup-content{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  min-width: 180px;
+}
+
+.sort-optie{
+  background-color: #11101d;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-family: "Raleway", sans-serif;
+  color: white;
+}
+
+.top{
+  border-radius: 12px 12px 0 0;
+}
+
+.bottom{
+  border-radius: 0 0 12px 12px;
+}
+
+.sort-optie:hover{
+  background-color: rgb(68, 15, 175);
+  transition: .3s ease;
+}
+
+.hoogste-korting{
+  padding-bottom: 10px;
+  background-color: #11101d;
+}
+
+.dropup-content{
+  display: none;
+  position: absolute;
+  z-index: 1;
+  bottom: 50px;
+  right: 0px;
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.dropbtn{
+  font-size: 25px;
+  border: none;
+  background-color: #11101d;
+  color: white;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin-top: 10px;
+} 
+
+.add_product_btn{
+  position: fixed;
+  bottom: 20px;
+  right: 85px;
+  z-index: 1;
+}
+
+.add_product_btn button{
+  font-size: 25px;
+  border: none;
+  background-color: #11101d;
+  color: white;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.add_product_btn button:hover{
+  background-color: rgb(68, 15, 175);
+  transition: .5s ease;
+  cursor: pointer;
+}
+
 .overzicht-container{
   grid-area: 1 / 2 / 1 / 2;
 }
 
-
 .besteloz-container {
   margin-top: 30px;
-  justify-items: center;
+  display: flex;
+  justify-content: center;
+  grid-area: 1 / 2 / 1 / 2;
 }
-
 
 table {
   border-collapse: collapse;
@@ -385,25 +478,25 @@ table {
   text-align: center;
   }
   
-  .besteloz-tabel th {
-    background-color: #ddd;
-  }
-  
-  #goedkeuren-btn {
-    background-color: rgb(211, 211, 211);
-    color: green;
-    border-radius: 5px;
-    font-weight: bold ;
-    padding: 2px;
-  }
-  
-  #annuleren-btn {
-    background-color: rgb(211, 211, 211);
-    color: red;
-    border-radius: 5px;
-    font-weight: bold ;
-    padding: 2px;
-  }
+.besteloz-tabel th {
+  background-color: #ddd;
+}
+
+#goedkeuren-btn {
+  background-color: rgb(211, 211, 211);
+  color: green;
+  border-radius: 5px;
+  font-weight: bold ;
+  padding: 2px;
+}
+
+#annuleren-btn {
+  background-color: rgb(211, 211, 211);
+  color: red;
+  border-radius: 5px;
+  font-weight: bold ;
+  padding: 2px;
+}
   
 .categorie-container {
   display: grid;
@@ -421,7 +514,6 @@ table {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-
 .categorie-foto{
   height: 300px;
   width: 100%;
@@ -432,24 +524,69 @@ table {
 
 .categorie-links{
   grid-area: 1 / 1 / 2 / 2;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
+  position: relative;
+  text-align: center;
 }
-
 
 .categorie-rechts{
   grid-area: 1 / 2 / 2 / 3;
-  padding: 10px 20px;
+  gap: 5px;
+  padding: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 }
 
+.korting-product{
+  position: relative;
+}
+
+.cat-ribbon{
+  position: absolute;
+  width: 40px;
+  height: 15px;
+  background: rgb(232, 0, 0);
+  top: 6px;
+  right: -4px;
+  color: white;
+}
+
+.cat-ribbon p{
+  position: absolute;
+  top: -1.5px;
+  font-family: "Raleway", sans-serif;
+  font-size: 12px;
+  top: 0.3px;
+}
+
+.cat-ribbon::before{
+  content: "";
+  position: absolute;
+  top: -4px;
+  right: 0;
+  border-left: 2px solid rgb(157, 0, 0);
+  border-right: 2px solid transparent;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid rgb(157, 0, 0);
+}
+.cat-ribbon::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -15px;
+  border-left: 7.5px solid transparent;
+  border-right: 7.5px solid rgb(232, 0, 0);
+  border-top: 7.5px solid rgb(232, 0, 0);
+  border-bottom: 7.5px solid rgb(232, 0, 0);
+}
+
 .catpro-foto{
   text-decoration: none;
   object-fit: cover;
-  height: 80px;
+  object-position: center;
+  height: 100%;
   width: 100%;
+  position: relative;
 }
 
 .categorie-container a{
@@ -459,84 +596,18 @@ table {
 .categorie-naam{
   text-align: center;
   font-size: 20px;
-  padding-bottom: 5px;
-}
-
-/* Toevoegen popup */
-.toevoegen {
-  display: none; 
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
+  position: absolute;
   width: 100%;
-  height: 100%; 
-  overflow: auto;
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
-}
-
-/* Modal Content */
-.toevoegen-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 25%;
-}
-/* bewerken popup */
-.bewerken {
-  display: none; 
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
+  background-color: rgba(0,0,0,0.4);
+  color: white;
+  padding: 8px 0;
   top: 0;
-  width: 100%;
-  height: 100%; 
-  overflow: auto;
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
+  backdrop-filter: blur(1px);
 }
 
-/* Modal Content */
-.bewerken-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 25%;
-}
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* The Close Button */
-.close2 {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close2:hover,
-.close2:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+.categorie-naam h2{
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
 }
 
 .cart-container{
@@ -817,6 +888,28 @@ table {
   font-weight: 600;
 }
 
+.afreken_btn input{
+  width: 100%;
+  margin-top: 15px;
+  padding: 8px 0;
+  font-size: 20px;
+  border-radius: 12px;
+  color: #11101d;
+  background-color: white;
+  border: 2px solid white;
+  font-family: "Raleway", sans-serif;
+  font-weight: 900;
+}
+
+.afreken_btn input:hover{
+  background-color: rgb(68, 15, 175);
+  border-color: rgb(68, 15, 175);
+  color: white;
+  cursor: pointer;
+  transition: .5s ease;
+  font-weight: 500;
+}
+
 .divider:after,
 .divider:before {
 content: "";
@@ -843,30 +936,46 @@ margin-top: 250px;
 
 
 .categorie1-foto{
-  height: 50px;
-  max-width: 	100%;
+  height: 20px;
 }
 
-
-.container1{
-
-    height: 100vh;
-    max-width: 100vw;
-    display: grid;
-    grid-template-columns: 78px 1fr;
-    grid-template-rows: 1fr;
-    grid-auto-flow: row;
-  
-}
-
-.categoriebeheer-container{
-  grid-area: 1 / 2 / 1 / 2;
+.toevoegen
+{
   display: flex;
-  justify-content: center;
+  justify-content: center;  
 }
 
-.categoriebeheer-container td{
-  border: 1px solid #545454;
-  padding: 20px;
-
+.toevoegen .input {
+  border: 1px solid rgb(13, 13, 13);
+  color: #051922;
+  background-color: #d9d9d9;
+  padding: 15px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 15px;
+  text-align: center;
+  margin: 3px;
 }
+
+.toevoegen .input:hover {
+  background-color: #c1c1c1;
+  color: #ddd;
+}
+
+.toevoegen-btn {
+  font-family: 'Poppins', sans-serif;
+  display: inline-block;
+  background-color: #F28123;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #000000;
+  color: #ffffff;
+  margin-left: 32.5%;
+}
+
+.toevoegen-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+

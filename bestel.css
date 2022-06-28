@@ -1,10 +1,9 @@
 .betaal-form {
-width: 50%;  
+display: flex;
 justify-content: center;
-margin-left: 350px;
 }
 
-.bp {
+.bf {
   border: 1px solid rgb(13, 13, 13);
   color: #051922;
   background-color: #d9d9d9;
@@ -16,7 +15,7 @@ margin-left: 350px;
   margin: 3px;
 }
 
-.bp:hover {
+.bf:hover {
   background-color: #c1c1c1;
   color: #ddd;
 }
@@ -37,4 +36,63 @@ margin-left: 350px;
 .bestel-btn:hover {
   background-color: #ffffff;
   color: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+.openBtn {
+  display: flex;
+  justify-content: left;
+}
+.openButton {
+  border: none;
+  border-radius: 5px;
+  background-color: #1c87c9;
+  color: white;
+  padding: 14px 20px;
+  cursor: pointer;
+  position: fixed;
+}
+.bewerken-popup {
+  position: relative;
+  text-align:left;
+  width: 100%;
+}
+.bewerken-container {
+  display: none;
+  position: fixed;
+  left: 45%;
+  top: 5%;
+  transform: translate(-50%, 5%);
+  border: 3px solid #999999;
+  z-index: 9;
+}
+.formContainer {
+  max-width: 600px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+input{
+  display: flex;
+  justify-items: center;
+}
+
+.formContainer .btn {
+  padding: 12px 20px;
+  border: none;
+  background-color: #8ebf42;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+.formContainer .cancel {
+  background-color: #cc0000;
+}
+.formContainer .btn:hover,
+.openButton:hover {
+  opacity: 1;
 }
