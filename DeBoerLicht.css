@@ -843,5 +843,30 @@ margin-top: 250px;
 
 
 .categorie1-foto{
-  height: 20px;
+  height: 50px;
+  max-width: 	100%;
+}
+
+
+.container1{
+
+    height: 100vh;
+    max-width: 100vw;
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    grid-template-rows: 1fr;
+    grid-auto-flow: row;
+  
+}
+
+.categoriebeheer-container{
+  grid-area: 1 / 2 / 1 / 2;
+  display: flex;
+  justify-content: center;
+}
+
+.categoriebeheer-container td{
+  border: 1px solid #545454;
+  padding: 20px;
+
 }

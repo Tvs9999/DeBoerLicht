@@ -14,9 +14,8 @@ include("sidebar.php");
 </head>
 <body>
   
-<div class="container">
-    <div class="overzicht-container">
-      <div class="besteloz-tabel">
+<div class="container1">
+    <div class="categoriebeheer-container">
     <table>
       <tr>
         <th hidden>status</th>
@@ -39,8 +38,10 @@ include("sidebar.php");
               echo "
               
                 <tr>
-                  <td>" . $result['foto'] . "</td>
-                  <td><img src='UploadImg/".($result['foto'])."' class = 'categorie1-foto'>""</td>
+
+                 <td><img src='UploadImg/".($result['foto'])."' class = 'categorie1-foto'></td>
+                  <td>" . $result['naam'] . "</td>
+                 
                   
                   
                   
