@@ -22,13 +22,11 @@ session_start();
         <div class="besteloz-tabel">
           <table>
             <tr>
-              <th>Voornaam</th>
-              <th>Achternaam </th>
+              <th>Naam</th>
               <th>Datum</th>
               <th>Email</th>
               <th>Adres</th>
-              <th>Woonplaats</th>
-              <th>Postcode</th>
+              <th>Producten</th>
               <th>Totaalprijs </th>
               <th colspan="2" align="center">Opties</th>
   
@@ -40,37 +38,45 @@ session_start();
             $query = "SELECT * FROM bestellingen WHERE Datum < time'16:00:00'";
             $data = mysqli_query($conn, $query);
             $total = mysqli_num_rows($data);
-            if ($total != 0) {
+            
+            $query2 = "SELECT * FROM bestellingproducten WHERE bestelId = $thisId INNER JOIN producten ON bestellingproducten.prodId=producten.id";
+            $data2 = mysqli_query($conn, $query2);
+            $orderproducts = mysqli_num_rows($data2);
+            if ($total > 0) {
               while ($result = mysqli_fetch_assoc($data)) {
-  
-                echo "
+                $thisId = $result['id'];?>
+      
                 
                   <tr>
-                    <td hidden>" . $result['status'] . "</td>
-                    <td>" . $result['Voornaam'] . "</td>
-                    <td>" . $result['Achternaam'] . "</td>
-                    <td>" . $result['Datum'] . "</td>
-                    <td>" . $result['email'] . "</td>
-                    <td>" . $result['adres'] . "</td>
-                    <td>" . $result['Woonplaats'] . "</td>
-                    <td>" . $result['Postcode'] . "</td>
-                    <td>" . $result['totaalprijs'] . "</td>
+                    <td hidden><?php $result['status'] ?></td>
+                    <td><?php echo $result['Voornaam'] ?> <?php echo $result['Achternaam'] ?></td>
+                    <td> <?php echo $result['Datum'] ?> </td>
+                    <td> <?php echo $result['email'] ?> </td>
+                    <td> <?php echo $result['adres'] ?><br><?php echo $result['Postcode']?>, <?php echo $result['Woonplaats'] ?></td>
+                    <td> <?php
+                        if($orderproducts > 0){
+                          while($product = mysqli_fetsc_assoc($data2)){
+                            echo $product['naam'];
+                          }
+                        } ?>
+                    </td>
+                    <td> <?php echo $result['totaalprijs'] ?></td>
                     
                     
                     <td>
                     <a href='mail.php?Voornaam=$result[Voornaam]&Achternaam=$result[Achternaam]&Datum=$result[Datum]&email=$result[email]&adres=$result[adres]&totaalprijs=$result[totaalprijs]' onclick='return checkdelete()'><input type='submit' value='Goedkeuren' id='goedkeuren-btn'></a>
                     <a href='delete.php?Voornaam=$result[Voornaam]&Achternaam=$result[Achternaam]&Datum=$result[Datum]&email=$result[email]&adres=$result[adres]&totaalprijs=$result[totaalprijs]' onclick='return checkdelete2()'><input type='submit' value='Annuleren' id='annuleren-btn'></a>
                     </td>                     
-                  </tr>
-                  ";
+                  </tr><?php
+                  
               }
-            } else {
-              echo "
+            } 
+            else { ?>
                 <tr>
                 <td colspan='9' align='center' style='font-size: 20px;'>Geen Bestellingen</td>
                 </tr>
-                ";
-            }
+                
+            <?php }
             ?>
           </table>
         </div>
