@@ -160,16 +160,17 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                 <?php } ?>
 
                                 <div class="voeg-toe">
-                                <?php if (isset($_SESSION['email']) || isset($_SESSION['wachtwoord'])) { ?>
-                                    <a href="bewerken.php">
-                                        <button class="voeg-toe-button">Wijzig</button>
-                                    </a>
-                                    <button class="delete-btn"><i class='bx bx-trash-alt'></i></button>
-                                <?php } 
-                                else{ ?>
-                                    <input class="voeg-toe-button" type="submit" name="add_to_cart" value="Voeg toe"></input>
-                                    <input type="text" name="quantity" class="aantal-input" value="1">
-                                <?php } ?>
+                                <?php if (isset($_SESSION['email']) || isset($_SESSION['wachtwoord'])) { 
+                                    echo"
+                                </form>
+                                    <a href='bewerken.php?id=$row[id]&naam=$row[naam]&prijs=$row[prijs]&korting=$row[korting]&type=$row[type]&voltage=$row[voltage]&catId=$row[catId]&voorraad=$row[voorraad]&Foto1=$row[Foto1]&Foto2=$row[Foto2]' class='delete-btn'><i class='fa-solid fa-pen-to-square'></i> </a>                                    </a>
+                                    <a href='verwijderen.php?id=".$row['id']."' class='delete-btn' onclick='return checkdelete()'><i class='bx bx-trash-alt'></i></a>";
+                                  
+                                }else{
+                                    echo"
+                                    <input class='voeg-toe-button' type='submit' name='add_to_cart' value='Voeg toe'></input>
+                                    <input type='text' name='quantity' class='aantal-input' value='1'>";
+                                } ?>
                                 </div>
                             </div>
                         </div>
@@ -206,3 +207,9 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
 </body>
 
 </html>
+
+<script>
+      function checkdelete() {
+    return confirm('Weet je zeker dat je deze product wil verwijderen?');
+  }
+</script>
