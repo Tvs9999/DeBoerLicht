@@ -190,7 +190,13 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                         </div>
                     </div>
                 </div>
-
+                <div class="add-btn">
+                    <a href="">
+                        <button>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </a>
+                </div>
                 <?php 
             } 
             
