@@ -167,7 +167,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                 <?php }
                                 else{ ?>
                                     <input class='voeg-toe-button' type='submit' name='add_to_cart' value='Voeg toe'></input>
-                                    <input type='text' name='quantity' class='aantal-input' value='1'>";
+                                    <input type='text' name='quantity' class='aantal-input' value='1'>
                                 <?php } ?>
                                 </div>
                             </div>

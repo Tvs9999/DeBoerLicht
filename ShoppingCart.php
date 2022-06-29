@@ -134,8 +134,8 @@ if(filter_input(INPUT_GET, 'action') == 'delete'){
                                                     </div>
                                                     <div class="hoeveelheid">
                                                         <input type="text" name="quantity" class="cart-aantal" value="<?php echo $sessionId['quantity']?>">
-                                                        <a href="ShoppingCart.php?action=delete&id=<?php echo $product['id'];?>">
-                                                            <button class="delete-btn"><i class='bx bx-trash-alt' ></i></button>
+                                                        <a class="delete-btn" href="ShoppingCart.php?action=delete&id=<?php echo $product['id'];?>">
+                                                            <i class='bx bx-trash-alt' ></i>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -184,10 +184,8 @@ if(filter_input(INPUT_GET, 'action') == 'delete'){
                                             </div>
                                             <div class="aligned-right">
                                                 <p><?php echo $sessionId['quantity']?>x</p>
-
                                             </div>
                                             <div class="aligned-right">
-
                                                 <p>
                                                     € <?php echo number_format($prijsMetKorting, 2, ",", ".")?>
                                                 </p>
