@@ -163,8 +163,8 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                 <?php if (isset($_SESSION['email']) || isset($_SESSION['wachtwoord'])) { 
                                     echo"
                                 </form>
-                                    <a href='bewerken.php?id=$row[id]&naam=$row[naam]&prijs=$row[prijs]&korting=$row[korting]&type=$row[type]&voltage=$row[voltage]&catId=$row[catId]&voorraad=$row[voorraad]&Foto1=$row[Foto1]&Foto2=$row[Foto2]' class='delete-btn'><i class='fa-solid fa-pen-to-square'></i> </a>                                    </a>
-                                    <a href='verwijderen.php?id=".$row['id']."' class='delete-btn' onclick='return checkdelete()'><i class='bx bx-trash-alt'></i></a>";
+                                    <a href='bewerken.php?id=$row[id]&categorie=$_GET[categorie]&naam=$row[naam]&prijs=$row[prijs]&korting=$row[korting]&type=$row[type]&voltage=$row[voltage]&catId=$row[catId]&voorraad=$row[voorraad]&Foto1=$row[Foto1]&Foto2=$row[Foto2]' class='delete-btn'><i class='fa-solid fa-pen-to-square'></i> </a>                                    </a>
+                                    <a href='verwijderen.php?id=".$row['id']."&categorie=".$_GET['categorie']."' class='delete-btn' onclick='return checkdelete()'><i class='bx bx-trash-alt'></i></a>";
                                   
                                 }else{
                                     echo"
@@ -194,7 +194,9 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                 </div>
 
                 <?php 
-            } else { ?>
+            } 
+            
+            else { ?>
                 <div class=" geen-producten">
                     <h1>er zijn geen producten gevonden in deze categorie</h1>
                 </div>
