@@ -61,13 +61,7 @@ include("connection.php");
                         </a>
                     <?php }
                 } ?> 
-                <div class="categorie_add add-btn">
-                    <a href="">
-                        <button>
-                            <i class="fas fa-plus"></i>
-                        </button>
-                    </a>
-                </div>            
+                      
         </div>
         <div class="sidebar-left">
             <?php include 'sidebar.php' ?>
