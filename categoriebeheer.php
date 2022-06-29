@@ -67,7 +67,13 @@ session_start();
   <div class="sidebarleft">
     <?php include "Sidebar.php";?>
   </div>
-
+  <div class="categorie_add add-btn">
+                    <a href="toevoegen2.php">
+                        <button>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </a>
+                </div>  
   
 </body>
 <script>
