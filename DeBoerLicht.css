@@ -625,7 +625,7 @@ table {
 
 .cart-container{
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 5fr 2fr;
   grid-template-rows: 1fr;
   grid-auto-flow: row;
 }
@@ -860,7 +860,8 @@ table {
 .prijs-item{
   color: white;
   display: grid;
-  grid-template-columns: 3fr auto 2fr;
+  grid-template-columns: 3fr auto auto;
+  gap: 0 10px;
 }
 
 .aligned-right{

@@ -1,6 +1,10 @@
 <?php
 include("connection.php");
 session_start();
+
+$totaal = 0;
+$totaleKortingPrijs = 0;
+$totaalZonderKorting = 0;
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +63,28 @@ session_start();
                     }
                   ?>
                 </td>
-                <td> <?php echo $result['totaalprijs'] ?></td>  
+                <td> 
+                
+                <?php
+                $sql = "SELECT * FROM bestellingproducten INNER JOIN producten ON bestellingproducten.prodId=producten.id WHERE bestelId = $thisId";
+                $executeSql = mysqli_query($conn, $sql);
+                $sqlRows = mysqli_num_rows($executeSql);
+
+                  if($sqlRows > 0){
+                    while ($product = mysqli_fetch_assoc($executeSql)){ 
+                      if($product['korting'] > 0){
+                        $prijsNaKorting = $product['prijs'] - ($product['prijs'] * ($product['korting'] / 100));
+                        $totaleKortingPrijs = $totaleKortingPrijs + ($prijsNaKorting * $product['quantity']);                
+                      }
+                      else{
+                        $totaalZonderKorting = $totaalZonderKorting + ($product['prijs'] * $product['quantity']);
+                      }
+                      $totaal = $totaalZonderKorting + $totaleKortingPrijs; 
+                    }
+                  } 
+                ?>
+                <p>€ <?php echo number_format($totaal, 2, ",", ".") ?></p>
+                </td>  
                 <td>
                   <a href='mail.php?Voornaam=$result[Voornaam]&Achternaam=$result[Achternaam]&Datum=$result[Datum]&email=$result[email]&adres=$result[adres]&totaalprijs=$result[totaalprijs]' onclick='return checkdelete()'><input type='submit' value='Goedkeuren' id='goedkeuren-btn'></a>
                   <a href='delete.php?Voornaam=$result[Voornaam]&Achternaam=$result[Achternaam]&Datum=$result[Datum]&email=$result[email]&adres=$result[adres]&totaalprijs=$result[totaalprijs]' onclick='return checkdelete2()'><input type='submit' value='Annuleren' id='annuleren-btn'></a>
