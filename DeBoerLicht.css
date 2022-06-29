@@ -478,6 +478,11 @@ table {
   background-color: #ddd;
 }
 
+.bestel_product{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
 #goedkeuren-btn {
   background-color: rgb(211, 211, 211);
   color: green;
@@ -499,6 +504,10 @@ table {
   grid-template-columns: 1fr 1fr;
   padding: 50px;
   gap: 20px 30px
+}
+
+.categorie-link{
+  height: 300px;
 }
 
 .categorie{
@@ -1054,4 +1063,5 @@ margin-top: 250px;
   background-color: #ffffff;
   color: #000000;
 }
+
 
