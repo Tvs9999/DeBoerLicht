@@ -43,7 +43,7 @@
         </li>
 
         <li>
-          <a href="categoriebeheer">
+          <a href="categoriebeheer.php">
             <i class='bx bx-category'></i>
             <span class="links-name">Categorieën</span>
           </a>

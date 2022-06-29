@@ -936,7 +936,7 @@ margin-top: 250px;
 
 
 .categorie1-foto{
-  height: 20px;
+  height: 50px;
 }
 
 .toevoegen
@@ -977,5 +977,13 @@ margin-top: 250px;
 .toevoegen-btn:hover {
   background-color: #ffffff;
   color: #000000;
+}
+
+.categoriebeheer-container {
+  grid-area: 1 / 2 / 1 / 2;
+  display: flex;
+  justify-content: center ;
+  margin-top: 20px;
+  
 }
 
