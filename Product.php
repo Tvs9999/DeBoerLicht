@@ -191,7 +191,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                     </div>
                 </div>
                 <div class="add-btn">
-                    <a href="">
+                    <a href="toevoegen.php?categorie=<?php echo $_GET['categorie'] ?>">
                         <button>
                             <i class="fas fa-plus"></i>
                         </button>
