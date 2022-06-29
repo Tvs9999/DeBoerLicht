@@ -16,9 +16,7 @@ session_start();
 
 <body>
   <div class="container">
-
     <div class="besteloz-container">
-      <div class="overzicht-container">
         <div class="besteloz-tabel">
           <table>
             <tr>
@@ -28,37 +26,27 @@ session_start();
               <th>Adres</th>
               <th>Producten</th>
               <th>Totaalprijs </th>
-              <th colspan="2" align="center">Opties</th>
-  
-  
-  
-            </tr>
+              <th colspan="2" align = "center">Opties</th>
+           </tr>
             <?php
-            error_reporting(0);
             $query = "SELECT * FROM bestellingen WHERE Datum < time'16:00:00'";
             $data = mysqli_query($conn, $query);
             $total = mysqli_num_rows($data);
             
-            $query2 = "SELECT * FROM bestellingproducten WHERE bestelId = $thisId INNER JOIN producten ON bestellingproducten.prodId=producten.id";
-            $data2 = mysqli_query($conn, $query2);
-            $orderproducts = mysqli_num_rows($data2);
             if ($total > 0) {
               while ($result = mysqli_fetch_assoc($data)) {
-                $thisId = $result['id'];?>
+                $thisId = $result['id'];
+                ?>
       
-                
-                  <tr>
-                    <td hidden><?php $result['status'] ?></td>
-                    <td><?php echo $result['Voornaam'] ?> <?php echo $result['Achternaam'] ?></td>
-                    <td> <?php echo $result['Datum'] ?> </td>
-                    <td> <?php echo $result['email'] ?> </td>
-                    <td> <?php echo $result['adres'] ?><br><?php echo $result['Postcode']?>, <?php echo $result['Woonplaats'] ?></td>
-                    <td> <?php
-                        if($orderproducts > 0){
-                          while($product = mysqli_fetsc_assoc($data2)){
-                            echo $product['naam'];
-                          }
-                        } ?>
+      
+                <tr>
+                  <td hidden><?php $result['status'] ?></td>
+                  <td><?php echo $result['Voornaam'] ?> <?php echo $result['Achternaam'] ?></td>
+                  <td> <?php echo $result['Datum'] ?> </td>
+                  <td> <?php echo $result['email'] ?> </td>
+                  <td> <?php echo $result['adres'] ?><br><?php echo $result['Postcode']?>, <?php echo $result['Woonplaats'] ?></td>
+                  <td> 
+                  
                     </td>
                     <td> <?php echo $result['totaalprijs'] ?></td>
                     
@@ -80,7 +68,6 @@ session_start();
             ?>
           </table>
         </div>
-      </div>
     </div>
     <div class="sidebar-left">
       <?php include("Sidebar.php"); ?>

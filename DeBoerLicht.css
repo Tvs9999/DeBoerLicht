@@ -456,10 +456,6 @@ pointer-events: none;
   cursor: pointer;
 }
 
-.overzicht-container{
-  grid-area: 1 / 2 / 1 / 2;
-}
-
 .besteloz-container {
   margin-top: 30px;
   display: flex;
