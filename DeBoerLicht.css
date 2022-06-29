@@ -347,6 +347,10 @@ pointer-events: none;
   padding: 2px 5px;
   height: 40px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .voeg-toe-button:hover{
@@ -433,14 +437,14 @@ pointer-events: none;
   margin-top: 10px;
 } 
 
-.add_product_btn{
+.add-btn{
   position: fixed;
   bottom: 20px;
   right: 85px;
   z-index: 1;
 }
 
-.add_product_btn button{
+.add-btn button{
   font-size: 25px;
   border: none;
   background-color: #11101d;
@@ -450,10 +454,14 @@ pointer-events: none;
   width: 50px;
 }
 
-.add_product_btn button:hover{
+.add-btn button:hover{
   background-color: rgb(68, 15, 175);
   transition: .5s ease;
   cursor: pointer;
+}
+
+.categorie_add{
+  right: 20px;
 }
 
 .besteloz-container {
@@ -825,6 +833,9 @@ table {
   height: 40px;
   width: 40px;
   border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .delete-btn:hover{

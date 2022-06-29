@@ -16,68 +16,58 @@ include("connection.php");
     <div class="container">
         <div class="categorie-container">
             <?php
-                error_reporting(0);
                 $query= "SELECT * FROM categorie";
                 $data = mysqli_query($conn,$query);
                 $total = mysqli_num_rows($data);
                 if($total!=0){
                     while($result=mysqli_fetch_assoc($data)){ ?>
-                                    <a href="product.php?categorie=<?php echo $result['naam'];?>" class="categorie-link">
-                                        <div class="categorie">
-                                            <div class="categorie-links">
+                        <a href="product.php?categorie=<?php echo $result['naam'];?>" class="categorie-link">
+                            <div class="categorie">
+                                <div class="categorie-links">
+                                    <?php
+                                        echo "<img src='UploadImg/".($result['foto'])."' class = 'categorie-foto'>";
+                                    ?>
+                                    <div class="categorie-naam">
+
+                                        <h2><?php echo $result['naam']; ?></h2>
+                                    </div>                               
+                                </div>
+        
+                                <?php $catId = $result['id'] ?>
+                                
+                                <div class="categorie-rechts">
+                                    <?php  $sql= "SELECT * FROM producten WHERE catId=$catId order by korting DESC LIMIT 4";
+                                
+                                    $Kevin = mysqli_query($conn,$sql);
+                                    $totaleDing = mysqli_num_rows($Kevin);	
+
+                                    if($totaleDing!=0){
+                                        while($productName=mysqli_fetch_assoc($Kevin)) { ?>
+                                            <div class="korting-product">
                                                 <?php
-                                                    echo "<img src='UploadImg/".($result['foto'])."' class = 'categorie-foto'>";
-                                                ?>
-                                                <div class="categorie-naam">
-
-                                                    <h2><?php echo $result['naam']; ?></h2>
-                                                </div>                               
-                                            </div>
-                    
-                                           <?php $catId = $result['id'] ?>
-                                            
-                                            <div class="categorie-rechts">
-                                               <?php  $sql= "SELECT * FROM producten WHERE catId=$catId order by korting DESC LIMIT 4";
-                                            
-                                               $Kevin = mysqli_query($conn,$sql);
-                                               $totaleDing = mysqli_num_rows($Kevin);	
-
-                                               if($totaleDing!=0){
-                                                while($productName=mysqli_fetch_assoc($Kevin)) { ?>
-                                                <div class="korting-product">
-                                                    <?php
-                                                        echo "<img src='UploadImg/".($productName['Foto1'])."' class = 'catpro-foto'>";
-                                                    ?> 
-                                                    <?php if($productName['korting'] > 0){?>
-                                                    <div class="cat-ribbon">
-                                                        <p>-<?php echo $productName['korting']; ?>%</p>
-                                                    </div>
-                                                    <?php } ?>
+                                                    echo "<img src='UploadImg/".($productName['Foto1'])."' class = 'catpro-foto'>";
+                                                ?> 
+                                                <?php if($productName['korting'] > 0){?>
+                                                <div class="cat-ribbon">
+                                                    <p>-<?php echo $productName['korting']; ?>%</p>
                                                 </div>
-                                                    
-                                                
-                                                <?php }
-                                               }
-                                                ?>
-
-
-
-
-
-                                               
+                                                <?php } ?>
                                             </div>
-                                        </div>
-                                    </a>
-
-
-                            
-                                     
-
-                        <?php }
-                    } ?>  
-
-
-                    
+                                    <?php }
+                                    } ?>
+                                               
+                                </div>
+                            </div>
+                        </a>
+                    <?php }
+                } ?> 
+                <div class="categorie_add add-btn">
+                    <a href="">
+                        <button>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </a>
+                </div>            
         </div>
         <div class="sidebar-left">
             <?php include 'sidebar.php' ?>

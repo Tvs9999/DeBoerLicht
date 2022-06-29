@@ -49,13 +49,6 @@
           </a>
         </li>
 
-        <li>
-          <a href="toevoegen.php">
-            <i class='bx bx-plus-circle'></i>
-            <span class="links-name">Toevoegen</span>
-          </a>
-        </li>
-
         <div class="logout">
           <li>
             <a href="logout.php">

@@ -160,18 +160,15 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                 <?php } ?>
 
                                 <div class="voeg-toe">
-                                <?php if (isset($_SESSION['email']) || isset($_SESSION['wachtwoord'])) { 
-                                    echo"
-                                </form>
-                                   
-                                                       </a>
-                                    <a href='verwijderen.php?id=".$row['id']."&categorie=".$_GET['categorie']."' class='delete-btn' onclick='return checkdelete()'><i class='bx bx-trash-alt'></i></a>";
-                                  
-                                }else{
-                                    echo"
+                                <?php if (isset($_SESSION['email']) || isset($_SESSION['wachtwoord'])) { ?> 
+                                        <a href='bewerken.php?id=<?php echo $row['id']?>&categorie=<?php echo $_GET['categorie']?>' class='voeg-toe-button'>Wijzig</a>
+                                        <a href='verwijderen.php?id=<?php echo $row['id']?>&categorie=<?php $_GET['categorie']?>' class='delete-btn' onclick='return checkdelete()'><i class='bx bx-trash-alt'></i></a>
+                                    </form>
+                                <?php }
+                                else{ ?>
                                     <input class='voeg-toe-button' type='submit' name='add_to_cart' value='Voeg toe'></input>
                                     <input type='text' name='quantity' class='aantal-input' value='1'>";
-                                } ?>
+                                <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -193,7 +190,13 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                         </div>
                     </div>
                 </div>
-
+                <div class="add-btn">
+                    <a href="">
+                        <button>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </a>
+                </div>
                 <?php 
             } 
             
