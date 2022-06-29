@@ -76,25 +76,17 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
             if (isset($_GET['sort_alphabet'])) {
                 if ($_GET['sort_alphabet'] == "A-Z") {
                     $sql = "SELECT * FROM producten WHERE catId = $catId ORDER BY naam ASC";
-                } 
-
-                else if ($_GET['sort_alphabet'] == "Z-A") {
+                } else if ($_GET['sort_alphabet'] == "Z-A") {
                     $sql = "SELECT * FROM producten WHERE catId = $catId ORDER BY naam DESC";
-                }
-
-                else if ($_GET['sort_alphabet'] == "HoogsteKorting") {
+                } else if ($_GET['sort_alphabet'] == "HoogsteKorting") {
                     $sql = "SELECT * FROM producten WHERE catId = $catId ORDER BY korting DESC";
+                } else {
+                    $sql = "SELECT * FROM producten WHERE catId = $catId";
                 }
-
-                else{
-                    $sql = "SELECT * FROM producten WHERE catId = $catId"; 
-                }
-            }
-            else{
-                $sql = "SELECT * FROM producten WHERE catId = $catId"; 
+            } else {
+                $sql = "SELECT * FROM producten WHERE catId = $catId";
             }
 
-            $results = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($results);
 
 
@@ -104,7 +96,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                     WHERE id = $catId";
                     $catNaam = mysqli_query($conn, $query);
                     $categorie = mysqli_fetch_array($catNaam);
-                    ?>
+            ?>
                     <form method="post" action="Product.php?categorie=<?php echo $_GET['categorie'] ?>&action=add&id=<?php echo $row['id']; ?>">
                         <div class="product">
                             <div class="product-links">
@@ -154,68 +146,74 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                             <h2><?php echo "€ " . number_format($row['prijs'], 2, ",", "."); ?></h2>
                                         </s>
                                         <h2 class="product-prijs"><?php echo "€ " . number_format($prijsNaKorting, 2, ",", "."); ?></h2>
-                                    </div> 
+                                    </div>
                                 <?php } else { ?>
                                     <h2 class="product-prijs"><?php echo "€ " . number_format($row['prijs'], 2, ",", "."); ?></h2>
                                 <?php } ?>
 
                                 <div class="voeg-toe">
-                                <?php if (isset($_SESSION['email']) || isset($_SESSION['wachtwoord'])) { ?> 
-                                        <a href='bewerken.php?id=<?php echo $row['id']?>&categorie=<?php echo $_GET['categorie']?>' class='voeg-toe-button'>Wijzig</a>
-                                        <a href='verwijderen.php?id=<?php echo $row['id']?>&categorie=<?php $_GET['categorie']?>' class='delete-btn' onclick='return checkdelete()'><i class='bx bx-trash-alt'></i></a>
-                                    </form>
-                                <?php }
-                                else{ ?>
-                                    <input class='voeg-toe-button' type='submit' name='add_to_cart' value='Voeg toe'></input>
-                                    <input type='text' name='quantity' class='aantal-input' value='1'>
-                                <?php } ?>
-                                </div>
-                            </div>
-                        </div>
+                                    <?php if (isset($_SESSION['email']) || isset($_SESSION['wachtwoord'])) { 
+                                        $thisCategorie = $_GET['categorie'];
+                                        ?>
+                                        <a href='bewerken.php?id=<?php echo $row['id'] ?>&categorie=<?php echo $thisCategorie ?>' class='voeg-toe-button'>Wijzig</a>
+                                        <a href='verwijderen.php?id=<?php echo $row['id'] ?>&categorie=<?php $thisCategorie ?>' class='delete-btn' onclick='return checkdelete()'><i class='bx bx-trash-alt'></i></a>
                     </form>
-                    <?php } ?>
-
-        
-                <div class="sorteren">
-                    <div class="dropup">
-                        <div class="dropup-content">
-                                <a class="top sort-optie" href="Product.php?categorie=<?php echo $_GET['categorie'] ?>&sort_alphabet=A-Z">A-Z</a>
-                                <a class="sort-optie" href="Product.php?categorie=<?php echo $_GET['categorie'] ?>&sort_alphabet=Z-A">Z-A</a>
-                                <a class="bottom sort-optie" href="Product.php?categorie=<?php echo $_GET['categorie'] ?>&sort_alphabet=HoogsteKorting">Hoogste korting</a>
-                        </div>
-                        <div class="dropup_btn">
-                            <button class="dropbtn">
-                                <i class="fas fa-sort"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="add-btn">
-                    <a href="toevoegen.php?categorie=<?php echo $_GET['categorie'] ?>">
-                        <button>
-                            <i class="fas fa-plus"></i>
-                        </button>
-                    </a>
-                </div>
-                <?php 
-            } 
-            
-            else { ?>
-                <div class=" geen-producten">
-                    <h1>er zijn geen producten gevonden in deze categorie</h1>
-                </div>
-            <?php } ?>
-        </div>
-        <div class="sidebar-left">
-            <?php include 'Sidebar.php' ?>
+                <?php } else { ?>
+                    <input class='voeg-toe-button' type='submit' name='add_to_cart' value='Voeg toe'></input>
+                    <input type='text' name='quantity' class='aantal-input' value='1'>
+                <?php } ?>
         </div>
     </div>
+    </div>
+    </form>
+<?php } ?>
+
+
+<div class="sorteren">
+    <div class="dropup">
+        <div class="dropup-content">
+            <a class="top sort-optie" href="Product.php?categorie=<?php echo $_GET['categorie'] ?>&sort_alphabet=A-Z">A-Z</a>
+            <a class="sort-optie" href="Product.php?categorie=<?php echo $_GET['categorie'] ?>&sort_alphabet=Z-A">Z-A</a>
+            <a class="bottom sort-optie" href="Product.php?categorie=<?php echo $_GET['categorie'] ?>&sort_alphabet=HoogsteKorting">Hoogste korting</a>
+        </div>
+        <div class="dropup_btn">
+            <button class="dropbtn">
+                <i class="fas fa-sort"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="add-btn">
+    <a href="toevoegen.php?categorie=<?php echo $_GET['categorie'] ?>">
+        <button>
+            <i class="fas fa-plus"></i>
+        </button>
+    </a>
+</div>
+<?php
+            } else { ?>
+    <div class=" geen-producten">
+        <h1>er zijn geen producten gevonden in deze categorie</h1>
+    </div>
+    <div class="add-btn">
+        <a href="toevoegen.php?categorie=<?php echo $_GET['categorie'] ?>">
+            <button>
+                <i class="fas fa-plus"></i>
+            </button>
+        </a>
+    </div>
+<?php } ?>
+</div>
+<div class="sidebar-left">
+    <?php include 'Sidebar.php' ?>
+</div>
+</div>
 </body>
 
 </html>
 
 <script>
-      function checkdelete() {
-    return confirm('Weet je zeker dat je deze product wil verwijderen?');
-  }
+    function checkdelete() {
+        return confirm('Weet je zeker dat je deze product wil verwijderen?');
+    }
 </script>
