@@ -347,6 +347,10 @@ pointer-events: none;
   padding: 2px 5px;
   height: 40px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .voeg-toe-button:hover{
@@ -825,6 +829,9 @@ table {
   height: 40px;
   width: 40px;
   border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .delete-btn:hover{
