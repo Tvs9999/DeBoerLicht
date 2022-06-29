@@ -10,46 +10,53 @@ $type = $_POST['type'];
 $voltage = $_POST['voltage'];
 $catId = $_POST['catId'];
 $voorraad = $_POST['voorraad'];
-// $target_dir = "UploadImg/";
-// $target_file = $target_dir . basename($_FILES["Foto1"]["name"]);
-// $uploadOk = 1;
-// $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-// if (isset($_POST["submit"])) {
-//     $check = getimagesize($_FILES["Foto1"]["tmp_name"]);
-//     if ($check !== false) {
-//         echo "File is een foto - " . $check["mime"] . ".";
-//         $uploadOk = 1;
-//     } else {
-//         echo  "File is geen foto.";
-//         $uploadOk = 0;
-//     }
-// }
 
-// if (file_exists($target_file)) {
-//     echo "Bestand bestaat al.";
-//     $uploadOk = 0;
-// }
 
-// if ($_FILES["file"]["size"] > 50000000) {
-//     echo "Bestand is te groot";
-//     $uploadOk = 0;
-// }
+if (isset($_POST['submit'])) {
+    $Foto1 = $_FILES['Foto1'];
+    $Foto2 = $_FILES['Foto2'];
 
-// if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-//     echo "Alleen JPG, JPEG, PNG & GIF files zijn toegestaan.";
-//     $uploadOk = 0;
-// }
+    $fileName = $_FILES['Foto1']['name'];
+    $fileTmpName = $_FILES['Foto1']['tmp_name'];
+    $fileSize = $_FILES['Foto1']['size'];
+    $fileError = $_FILES['Foto1']['error'];
+    $fileType = $_FILES['Foto1']['type'];
 
-// if ($uploadOk == 0) {
-//     echo "Uploaden is mislukt.";
-// } else {
-//     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-//         echo "Het bestand " . htmlspecialchars(basename($_FILES["file"]["name"])) . " has been uploaded.";
-//     }
+    $fileName2 = $_FILES['Foto2']['name'];
+    $fileTmpName2 = $_FILES['Foto2']['tmp_name'];
+    $fileSize2 = $_FILES['Foto2']['size'];
+    $fileError2 = $_FILES['Foto2']['error'];
+    $fileType2 = $_FILES['Foto2']['type'];
 
-    $insertsql = "INSERT INTO `producten`(`id`, `naam`, `prijs`, `korting`, `type`, `voltage`, `catId`, `voorraad`, `Foto1`) VALUES ('$id','$naam','$prijs','$korting','$type','$voltage','$catId','$voorraad .','$target_file')";
-    $insert = $conn->query($insertsql);
-    header("Location: index.php");
-    echo "<script>alert('Product heeft toegevoegd')</script>";
-// }
+    $fileExt = explode('.', $fileName);
+    $fileActualExt = strtolower(end($fileExt));
+
+    $fileExt2 = explode('.', $fileName2);
+    $fileActualExt2 = strtolower(end($fileExt2));
+
+    $allowed = array('jpg', 'jpeg', 'png');
+
+    if (in_array($fileActualExt, $allowed) && in_array($fileActualExt2, $allowed)) {
+        if ($fileError === 0 && $fileError2 === 0) {
+            if ($fileSize < 1000000 && $fileSize2 < 1000000) {
+                $fileDestination = 'UploadImg/' .$fileName;
+                move_uploaded_file($fileTmpName, $fileDestination);
+                $fileDestination2 = 'UploadImg/'.$fileName2;
+                move_uploaded_file($fileTmpName2, $fileDestination2);
+
+                $insertsql = "INSERT INTO `producten`(`id`, `naam`, `prijs`, `korting`, `type`, `voltage`, `catId`, `voorraad`, `Foto1`, `Foto2`) VALUES ('$id','$naam','$prijs','$korting','$type','$voltage','$catId','$voorraad .','$fileName','$fileName')";
+                $insert = $conn->query($insertsql);
+                header("Location: product.php?categorie=lamp");
+                echo "<script>alert('Product heeft toegevoegd')</script>";
+            } else {
+                echo "Uw foto is te groot.";
+            }
+        } else {
+            echo "Er is een fout met het uploaden van de foto.";
+        }
+    }
+} else {
+    echo "Er is een fout met het uploaden van de foto.";
+}
+?>
