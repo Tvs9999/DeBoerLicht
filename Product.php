@@ -137,7 +137,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                 <div class="voorraad">
                                     <?php
 
-                                    if ($row["voorraad"] > 5) { ?>
+                                    if ($row["voorraad"] >= 5) { ?>
                                         <p class="op-voorraad"><i class="fa fa-circle fa-xs"></i> Op voorraad</p>
                                     <?php } else if ($row["voorraad"] > 0 && $row["voorraad"] < 5) { ?>
                                         <p class="product-voorraad"><i class="fa fa-circle fa-xs"></i> Nog maar <?php echo $row['voorraad'] ?> op voorraad</p>

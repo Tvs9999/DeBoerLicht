@@ -18,21 +18,6 @@ if(filter_input(INPUT_GET, 'action') == 'delete'){
     $_SESSION['shopping_cart'] = array_values($_SESSION['shopping_cart']);
 }
 
-if(isset($_GET['action'])){
-    if($_GET['action'] == 'add'){
-        if(filter_input(INPUT_GET, 'afrekenen')){
-            if(isset($_SESSION['total'])){
-                header("Location: betaalform.php");
-            }
-            else{
-                $_SESSION['total'][0]=array(
-                    'total' => filter_input(INPUT_POST, 'total'),
-                );
-            }
-        }
-        header("Location: betaalform.php");
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -250,10 +235,7 @@ if(isset($_GET['action'])){
                             </div>
                         </div>
                         <div class="afreken_btn">
-                            <form method="post" action="ShoppingCart.php?action=add">
-                                <input type="submit" name="afrekenen" value="Afrekenen">
-                                <input type="hidden" value="<?php $total ?>">
-                            </form>
+                            <button id="open">Afrekenen</button>
                         </div>
                     <?php } ?>
                 </div>
@@ -262,6 +244,34 @@ if(isset($_GET['action'])){
         <div class="sidebar-left">
             <?php include 'Sidebar.php' ?>
         </div>
-    </div>
+        <div class="betaal-container" id="betaal_container">
+            <div class="betaal-modal">
+                <div class="betaal-form">
+                    <form action="bestel.php" method="POST">
+                        <input type="text" name="Voornaam" class="bf" placeholder="Voornaam"><br>
+                        <input type="text" name="Achternaam" class="bf" placeholder="Achternaam"><br>
+                        <input type="text" name="email" class="bf" placeholder="Email adres"><br>
+                        <input type="text" name="adres" class="bf" placeholder="Adres"><br>
+                        <input type="text" name="Woonplaats" class="bf" placeholder="Plaats"><br>
+                        <input type="text" name="Postcode" class="bf" placeholder="postcode"><br>
+                        <button class="bestel-btn" type="submit" name="submit">Betaal</button>
+                    </form>
+                    <button class="close_btn" id="close">Close</button>        
+                </div>
+            </div>
+        </div>
 </body>
+<script>
+    const open = document.getElementById('open');
+    const betaal_container = document.getElementById('betaal_container');
+    const close = document.getElementById('close');
+
+    open.addEventListener('click', () => {
+        betaal_container.classList.add('show')
+    });
+
+    close.addEventListener('click', () => {
+        betaal_container.classList.remove('show')
+    });
+</script>
 </html>
