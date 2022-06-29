@@ -1,6 +1,5 @@
 <?php
 include("connection.php");
-include("sidebar.php"); 
 ?>
 
 <!DOCTYPE html>
@@ -14,17 +13,18 @@ include("sidebar.php");
 </head>
 <body>
   
-<div class="container1">
+<div class="container">
     <div class="categoriebeheer-container">
+      <div class="besteloz-tabel">
     <table>
       <tr>
+
         <th hidden>status</th>
         <th>foto</th>
         <th>naam</th>
         <th colspan="2" align="center">Opties</th>
 
-        
-        							
+			
 
       </tr>
       <?php
@@ -46,7 +46,6 @@ include("sidebar.php");
                   
                   
                   <td>
-                  <input type='submit' value='aanmaken' id='goedkeuren-btn'>
                   <input type='submit' value='wijzigen' id='goedkeuren-btn'>
                   </td>                     
                 </tr>
@@ -62,10 +61,11 @@ include("sidebar.php");
           ?>
       
      </table>
+    </div>
   </div>
-
-
-</table>
+  <div class="sidebarleft">
+    <?php include "Sidebar.php";?>
+  </div>
 
   
 </body>
