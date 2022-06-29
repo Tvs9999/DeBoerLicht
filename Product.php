@@ -194,7 +194,9 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                 </div>
 
                 <?php 
-            } else { ?>
+            } 
+            
+            else { ?>
                 <div class=" geen-producten">
                     <h1>er zijn geen producten gevonden in deze categorie</h1>
                 </div>
