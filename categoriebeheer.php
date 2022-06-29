@@ -46,7 +46,7 @@ include("connection.php");
                   
                   
                   <td>
-                  <input type='submit' value='wijzigen' id='goedkeuren-btn'>
+                  <a href='bewerken2.php?id=$result[id]&naam=$result[naam]&foto=$result[foto] class='delete-btn'><i class='fa-solid fa-pen-to-square'></i>Wijzigen</a>                                    </a>
                   </td>                     
                 </tr>
                 ";
