@@ -66,8 +66,8 @@ if (isset($_POST['update-submit'])) {
   echo "Er is een fout.";
 }
 
-  header("Location: product.php?categorie=lamp");
-  echo "<script>alert('Gegvens opgeslagen')</script>";
+header('Refresh: 0.01; URL = product.php?categorie='.$_GET['categorie']);
+echo "<script>alert('Gegvens opgeslagen')</script>";
 }
 
 mysqli_close($conn);
