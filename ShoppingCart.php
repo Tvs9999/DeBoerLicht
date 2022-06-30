@@ -28,7 +28,7 @@ if(filter_input(INPUT_GET, 'action') == 'delete'){
         <script src="https://kit.fontawesome.com/f1bb87abfd.js" crossorigin="anonymous"></script>
         <script src="cart.js" async></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-        <link rel="stylesheet" href="DeBoerLicht.php">
+        <link rel="stylesheet" href="DeBoerLicht.css">
         <title>ShoppingCart</title>
     </head>
     <body>
