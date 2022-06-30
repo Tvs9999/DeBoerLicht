@@ -100,9 +100,22 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                     <form method="post" action="Product.php?categorie=<?php echo $_GET['categorie'] ?>&action=add&id=<?php echo $row['id']; ?>">
                         <div class="product">
                             <div class="product-links">
-                                <?php
-                                echo "<img src='UploadImg/" . (htmlspecialchars($row['Foto1'])) . "' class = 'product-foto'>";
-                                ?>
+                                <div class="slider">
+                                    <div class="slides">
+                                        <input type="radio" name="radio_btn" id="<?php echo $row['id']."1" ?>">
+                                        <input type="radio" name="radio_btn" id="<?php echo $row['id']."2" ?>">     
+                                        <div class="slide first">
+                                            <img src='UploadImg/<?php echo (htmlspecialchars($row['Foto1']))?>' class = 'product-foto'>  
+                                        </div>
+                                        <div class="slide">
+                                            <img src='UploadImg/<?php echo (htmlspecialchars($row['Foto2']))?>' class = 'product-foto' id='foto2'>
+                                        </div>
+                                    </div> 
+                                    <div class="navigation-manual">
+                                        <label for="<?php echo $row['id']."1" ?>" class="manual-btn"></label>
+                                        <label for="<?php echo $row['id']."2" ?>" class="manual-btn"></label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="product-rechts">
                                 <?php
@@ -213,7 +226,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
 </html>
 
 <script>
-    function checkdelete() {
-        return confirm('Weet je zeker dat je deze product wil verwijderen?');
-    }
+function checkdelete() {
+    return confirm('Weet je zeker dat je dit product wil verwijderen?');
+}
 </script>
