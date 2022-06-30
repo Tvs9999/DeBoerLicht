@@ -57,7 +57,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     <script src="https://kit.fontawesome.com/f1bb87abfd.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b453093fd3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="DeBoerLicht.css">
+    <link rel="stylesheet" href="DeBoerLicht.php">
 </head>
 
 <body class="">
