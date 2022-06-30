@@ -184,7 +184,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     </div>
 </div>
 <div class="add-btn">
-    <a href="toevoegen.php?categorie=<?php echo $_GET['categorie'] ?>">
+    <a href="toevoegen.php?categorie=<?php echo $categorie['naam'] ?>">
         <button>
             <i class="fas fa-plus"></i>
         </button>
@@ -196,7 +196,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         <h1>er zijn geen producten gevonden in deze categorie</h1>
     </div>
     <div class="add-btn">
-        <a href="toevoegen.php?categorie=<?php echo $_GET['categorie'] ?>">
+        <a href="toevoegen.php?categorie=<?php echo $_GET['categorie'] ?>& catId=<?php echo $catId ?>">
             <button>
                 <i class="fas fa-plus"></i>
             </button>
