@@ -4,7 +4,7 @@ include "connection.php";
 
 $id = $_POST['id'];
 $naam = $_POST['naam'];
-$foto = $_POST['foto'];
+// $foto = $_POST['foto'];
 
 
 

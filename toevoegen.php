@@ -22,14 +22,14 @@ $categorie = mysqli_fetch_array($catNaam);
   <div class="toevoegen">
 
     <div class="toevoegen-content">
-      <form action="upload.php" method="post" enctype="multipart/form-data">
+      <form action="upload.php?categorie=<?php echo $_GET['categorie'] ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id"><br>
         <input type="text" name="productnaam" class="input" placeholder="Product Naam" require><br>
         <input class="input" type="name" name="price" placeholder="Prijs"require><br>
         <input class="input" type="name" name="korting" placeholder="Korting" require><br>
         <input class="input" type="name" name="type" placeholder="Type" require><br>
         <input class="input" type="name" name="voltage" placeholder="Voltage" require><br>
-        <input type="text" naam="catId" value="<?php $catId ?>">
+        <input type="hidden" name="catId" value="<?php echo $catId ?>">
         <p class="input">Categorie: <?php echo $categorie['naam'] ?></p>
         <input class="input" type="name" name="voorraad" placeholder="Voorraad" require><br>
         <input class="input" type="file" name="Foto1" id="Foto1" require><br>

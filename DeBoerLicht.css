@@ -268,7 +268,7 @@ pointer-events: none;
   background-color: #40D3DC;
 }
 
-#:checked ~ .first{
+#checked ~ .first{
   margin-left: 0;
 }
 
