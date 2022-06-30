@@ -102,8 +102,8 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                             <div class="product-links">
                                 <div class="slider">
                                     <div class="slides">
-                                        <input type="radio" name="radio_btn" id="<?php echo $row['id']."1" ?>">
-                                        <input type="radio" name="radio_btn" id="<?php echo $row['id']."2" ?>">     
+                                        <input type="radio" name="radio_btn" id="radio1">
+                                        <input type="radio" name="radio_btn" id="radio2">     
                                         <div class="slide first">
                                             <img src='UploadImg/<?php echo (htmlspecialchars($row['Foto1']))?>' class = 'product-foto'>  
                                         </div>
@@ -112,8 +112,8 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                         </div>
                                     </div> 
                                     <div class="navigation-manual">
-                                        <label for="<?php echo $row['id']."1" ?>" class="manual-btn"></label>
-                                        <label for="<?php echo $row['id']."2" ?>" class="manual-btn"></label>
+                                        <label for="radio1" class="manual-btn"></label>
+                                        <label for="radio2" class="manual-btn"></label>
                                     </div>
                                 </div>
                             </div>
