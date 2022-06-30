@@ -47,7 +47,7 @@ if (isset($_POST['submit'])) {
 
                 $insertsql = "INSERT INTO `producten`(`id`, `naam`, `prijs`, `korting`, `type`, `voltage`, `catId`, `voorraad`, `Foto1`, `Foto2`) VALUES ('$id','$naam','$prijs','$korting','$type','$voltage','$catId','$voorraad .','$fileName','$fileName')";
                 $insert = $conn->query($insertsql);
-                header("Location: product.php?categorie=lamp");
+                header('Refresh: 0.01; URL = product.php?categorie='.$_GET['categorie']);
                 echo "<script>alert('Product heeft toegevoegd')</script>";
             } else {
                 echo "Uw foto is te groot.";
