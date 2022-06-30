@@ -8,8 +8,18 @@ $prijs = $_POST['price'];
 $korting = $_POST['korting'];
 $type = $_POST['type'];
 $voltage = $_POST['voltage'];
-$catId = $_POST['catId'];
 $voorraad = $_POST['voorraad'];
+$catId = $_POST['catId'];
+
+// $leCatNaam = $_GET['categorie'];
+// $getCatId = "SELECT id FROM categorie";
+// $cat = mysqli_query($conn, $getCatId);
+// $catRow = mysqli_fetch_array($cat);
+
+// $catId = $catRow['id'];
+
+// $catId = $_POST['id'];
+
 
 
 

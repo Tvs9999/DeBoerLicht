@@ -4,9 +4,7 @@ $product_ids = array();
 include 'connection.php';
 
 
-$sql = "SELECT * FROM producten";
-$results = mysqli_query($conn, $sql);
-$resultCheck = mysqli_num_rows($results);
+
 
 
 if (isset($_GET['action']) && isset($_GET['id'])) {
@@ -87,8 +85,8 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                 $sql = "SELECT * FROM producten WHERE catId = $catId";
             }
 
+            $results = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($results);
-
 
             if ($resultCheck > 0) {
                 while ($row = mysqli_fetch_array($results)) {
@@ -209,7 +207,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         <h1>er zijn geen producten gevonden in deze categorie</h1>
     </div>
     <div class="add-btn">
-        <a href="toevoegen.php?categorie=<?php echo $_GET['categorie'] ?>& catId=<?php echo $catId ?>">
+        <a href="toevoegen.php?categorie=<?php echo $_GET['categorie'] ?>">
             <button>
                 <i class="fas fa-plus"></i>
             </button>

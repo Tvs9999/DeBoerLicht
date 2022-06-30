@@ -1,6 +1,18 @@
 <?php
 include 'connection.php';
 
+$leCatNaam = $_GET['categorie'];
+$getCatId = "SELECT * FROM categorie WHERE naam = '$leCatNaam'";
+$cat = mysqli_query($conn, $getCatId);
+$catRow = mysqli_fetch_array($cat);
+
+$catId = $catRow['id'];
+
+$query = "SELECT naam FROM categorie 
+WHERE id = $catId";
+$catNaam = mysqli_query($conn, $query);
+$categorie = mysqli_fetch_array($catNaam);
+
 $thisId = $_GET['id'];
 $sql = "SELECT * FROM producten WHERE id = $thisId";
 $results = mysqli_query($conn, $sql);
@@ -29,7 +41,8 @@ if ($resultCheck > 0) {
         <input class="input" type="text" name="korting" value="<?php echo $product['korting'] ?>"><br>
         <input class="input" type="text" name="type" value="<?php echo $product['type'] ?>"><br>
         <input class="input" type="text" name="voltage" value="<?php echo $product['voltage'] ?>"><br>
-        <input class="input" type="text" name="catId" value="<?php echo $product['catId'] ?>"><br>
+        <input type="hidden" name="catId" value="<?php echo $catId ?>">
+        <p class="input">Categorie: <?php echo $categorie['naam'] ?></p>
         <input class="input" type="text" name="voorraad" value="<?php echo $product['voorraad'] ?>"><br>
         <input class="input" type="file" name="Foto1" value="<?php echo $product['Foto1'] ?>"><br>
         <input class="input" type="file" name="Foto2" value="<?php echo $product['Foto2'] ?>"><br>
