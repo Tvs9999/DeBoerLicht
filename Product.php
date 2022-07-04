@@ -212,13 +212,15 @@ else { ?>
     <div class=" geen-producten">
         <h1>er zijn geen producten gevonden in deze categorie</h1>
     </div>
-    <div class="add-btn">
-        <a href="toevoegen.php?categorie=<?php echo $_GET['categorie'] ?>">
-            <button>
-                <i class="fas fa-plus"></i>
-            </button>
-        </a>
-    </div>
+    <?php if(isset($_SESSION['email'])){?>
+        <div class="add-btn">
+            <a href="toevoegen.php?categorie=<?php echo $_GET['categorie'] ?>">
+                <button>
+                    <i class="fas fa-plus"></i>
+                </button>
+            </a>
+        </div>
+    <?php } ?>
 <?php } ?>
 </div>
 <div class="sidebar-left">
