@@ -194,15 +194,21 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         </div>
     </div>
 </div>
-<div class="add-btn">
-    <a href="toevoegen.php?categorie=<?php echo $categorie['naam'] ?>">
-        <button>
-            <i class="fas fa-plus"></i>
-        </button>
-    </a>
-</div>
-<?php
-            } else { ?>
+<?php 
+if(isset($_SESSION['email'])){ ?>
+    <div class="add-btn">
+        <a href="toevoegen.php?categorie=<?php echo $categorie['naam'] ?>">
+            <button>
+                <i class="fas fa-plus"></i>
+            </button>
+        </a>
+    </div>
+<?php }
+
+
+} 
+
+else { ?>
     <div class=" geen-producten">
         <h1>er zijn geen producten gevonden in deze categorie</h1>
     </div>

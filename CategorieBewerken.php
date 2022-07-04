@@ -1,10 +1,15 @@
 <?php
 include 'connection.php';
-$sql = "SELECT * FROM categorie WHERE 1";
+session_start();
+
+$currentId = $_GET['id'];
+$sql = "SELECT * FROM categorie WHERE id = $currentId";
 $results = mysqli_query($conn, $sql);
 $resultCheck = mysqli_num_rows($results);
 
 if ($resultCheck > 0) {
+  $categorie = mysqli_fetch_assoc($results);
+}
 ?>
 
 <head>
@@ -17,8 +22,8 @@ if ($resultCheck > 0) {
     <div class="toevoegen-content">
       <form action="" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="id"><br>
-        <input class="input" type="text" name="naam" value="<?php echo $_GET["naam"] ?>"><br>
-        <input class="input" type="file" name="foto" value="<?php echo $_GET["foto"] ?>"><br>
+        <input class="input" type="text" name="naam" value="<?php echo $categorie['naam'] ?>"><br>
+        <input class="input" type="file" name="foto" value="<?php echo $categorie['foto'] ?>"><br>
         
 
         <input class="toevoegen-btn" type="submit" value="Update" name="update-submit">
@@ -29,7 +34,7 @@ if ($resultCheck > 0) {
 
 </html>
 
-<?php }
+<?php
 if (isset($_POST['update-submit'])) {
   $id = $_GET['id'];
   $naam = $_POST['naam'];

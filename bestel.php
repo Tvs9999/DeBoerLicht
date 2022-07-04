@@ -27,6 +27,7 @@ if (isset($_POST['submit'])) {
       mysqli_query($conn, $sql);
     }
   }
-
+  session_unset();
+  session_destroy();
   header("Location: index.php");
 }

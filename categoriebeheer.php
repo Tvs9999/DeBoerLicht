@@ -18,40 +18,34 @@ session_start();
 
   <div class="container">
     <div class="categoriebeheer-container">
-      <div class="besteloz-tabel">
-        <table>
-          <tr>
-
-            <th hidden>status</th>
-            <th>foto</th>
-            <th>naam</th>
-            <th colspan="2" align="center">Opties</th>
-
-
-
-          </tr>
+      <div class="categoriebeheer">
+        <h1>Categoriebeheer <i class='bx bx-category'></i></h1>
+      </div>
           <?php
-          error_reporting(0);
           $query = "SELECT * FROM categorie";
           $data = mysqli_query($conn, $query);
           $total = mysqli_num_rows($data);
           if ($total != 0) {
-            while ($result = mysqli_fetch_assoc($data)) {
-
-              echo "
-              
-                <tr>
-
-                 <td><img src='UploadImg/" . ($result['foto']) . "' class = 'categorie1-foto'></td>
-                  <td>" . $result['naam'] . "</td>                  
-                  <td>
-                  <a href='bewerken2.php?id=$result[id]&naam=$result[naam]&foto=$result[foto] class='delete-btn'><i class='fa-solid fa-pen-to-square'></i>Wijzigen</a>                                    </a>
-                  <a href='verwijderen2.php?id=$result[id]' onclick='return checkdelete3()'>Verwijderen</a>
-
-                  </td>                     
-                </tr>
-                ";
-            }
+            while ($result = mysqli_fetch_assoc($data)) {?>
+              <div class="cat">
+                <div class = 'categoriebeheer-foto'>
+                  <img src='UploadImg/<?php echo ($result['foto'])?>'>
+                </div>
+                <div class="catbeheer-naam">
+                  <h1>
+                    <?php echo $result['naam'] ?>                  
+                  </h1>
+                </div>
+                <div class="catbeheer-opties">
+                  <a href='CategorieBewerken.php?id=<?php echo $result['id']?>' class = "bottom20 delete-btn">
+                    <i class='bx bx-edit'></i>
+                  </a>
+                  <a href='verwijderen2.php?id=<?php echo $result['id']?>' onclick='return checkdelete3()' class = "delete-btn">
+                    <i class='bx bx-trash-alt'></i>
+                  </a>
+                </div>
+              </div>
+          <?php  }
           } else {
             echo "
               <tr>
@@ -60,9 +54,6 @@ session_start();
               ";
           }
           ?>
-
-        </table>
-      </div>
     </div>
     <div class="sidebarleft">
       <?php include "Sidebar.php"; ?>
@@ -77,14 +68,6 @@ session_start();
 
 </body>
 <script>
-  function checkdelete() {
-    return confirm('Weet je zeker dat je deze categorie hebt aangemaakt?');
-  }
-
-  function checkdelete2() {
-    return confirm('Weet je zeker dat je deze bestelling wil annuleren?');
-  }
-
   function checkdelete3() {
     return confirm('Weet je zeker dat je deze product wil verwijderen?');
   }
