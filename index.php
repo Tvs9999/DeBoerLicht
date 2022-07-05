@@ -64,7 +64,7 @@ include("connection.php");
                       
         </div>
         <div class="sidebar-left">
-            <?php include 'sidebar.php';
+            <?php include 'Sidebar.php';
             error_reporting(2) ?>
         </div>
     </div>
